@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rocket-pool/main/json-schema/rocket-pool-rewards-interval-schema.json",
+  "title": "RocketPoolRewardsInterval",
+  "description": "A single rewards-distribution interval on the Rocket Pool network. Each interval produces a Merkle tree of node-operator and oracle DAO rewards (RPL plus ETH from the smoothing pool).",
+  "type": "object",
+  "required": ["index", "merkleRoot", "startTime", "endTime"],
+  "properties": {
+    "index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "merkleRoot": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "nodeRpl": {
+      "type": "string",
+      "description": "RPL allocated to node operators in wei"
+    },
+    "odaoRpl": {
+      "type": "string",
+      "description": "RPL allocated to oracle DAO members"
+    },
+    "pdaoRpl": {
+      "type": "string",
+      "description": "RPL allocated to the protocol DAO treasury"
+    },
+    "smoothingPoolEth": {
+      "type": "string",
+      "description": "ETH distributed from the smoothing pool in wei"
+    }
+  }
+}

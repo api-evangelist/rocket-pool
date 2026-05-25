@@ -1,0 +1,515 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go)
+  description: >-
+    Read-oriented protocol surface exposed by the rocketpool-go Golang library
+    on top of the Rocket Pool smart contracts deployed on Ethereum. The API
+    described here is a logical mapping of rocketpool-go packages — auction,
+    deposit, minipool, network, node, rewards, settings, tokens, dao/protocol,
+    dao/trustednode — onto HTTP-style operations. There is no hosted HTTP
+    endpoint for this API; integrators read the equivalent state via Ethereum
+    JSON-RPC eth_call requests against the deployed contracts using the Go
+    library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+  - url: https://protocol.rocketpool.example/v1
+    description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+  - name: Deposit
+  - name: Minipool
+  - name: Node
+  - name: Network
+  - name: Rewards
+  - name: Auction
+  - name: Tokens
+  - name: ProtocolDAO
+  - name: OracleDAO
+  - name: Settings
+paths:
+  /deposit/pool:
+    get:
+      tags: [Deposit]
+      summary: Get Deposit Pool Status
+      operationId: getDepositPool
+      responses:
+        '200':
+          description: Deposit pool state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositPool'
+  /minipools:
+    get:
+      tags: [Minipool]
+      summary: List Minipools
+      operationId: listMinipoolsProtocol
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            maximum: 1000
+      responses:
+        '200':
+          description: Page of minipools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MinipoolDetails'
+  /minipools/{address}:
+    get:
+      tags: [Minipool]
+      summary: Get Minipool Details
+      operationId: getMinipool
+      parameters:
+        - $ref: '#/components/parameters/Address'
+      responses:
+        '200':
+          description: Minipool details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MinipoolDetails'
+  /nodes:
+    get:
+      tags: [Node]
+      summary: List Registered Nodes
+      operationId: listNodes
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Page of registered nodes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/NodeDetails'
+  /nodes/{address}:
+    get:
+      tags: [Node]
+      summary: Get Node Details
+      operationId: getNodeDetails
+      parameters:
+        - $ref: '#/components/parameters/Address'
+      responses:
+        '200':
+          description: Node details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeDetails'
+  /nodes/{address}/minipools:
+    get:
+      tags: [Node]
+      summary: List A Node's Minipools
+      operationId: listNodeMinipools
+      parameters:
+        - $ref: '#/components/parameters/Address'
+      responses:
+        '200':
+          description: Minipools belonging to the node
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MinipoolDetails'
+  /network/balances:
+    get:
+      tags: [Network]
+      summary: Get Latest Reported Network Balances
+      operationId: getNetworkBalances
+      responses:
+        '200':
+          description: Reported balances and rETH backing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkBalances'
+  /network/fees:
+    get:
+      tags: [Network]
+      summary: Get Network Fee Configuration
+      operationId: getNetworkFees
+      responses:
+        '200':
+          description: Current node commission curve
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkFees'
+  /network/prices:
+    get:
+      tags: [Network]
+      summary: Get Latest Reported RPL Price
+      operationId: getNetworkPrices
+      responses:
+        '200':
+          description: Reported RPL price and supply
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPrices'
+  /rewards/intervals:
+    get:
+      tags: [Rewards]
+      summary: List Rewards Intervals
+      operationId: listRewardsIntervals
+      responses:
+        '200':
+          description: Past and current rewards intervals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RewardsInterval'
+  /rewards/intervals/{index}:
+    get:
+      tags: [Rewards]
+      summary: Get Rewards Interval Detail
+      operationId: getRewardsInterval
+      parameters:
+        - name: index
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Rewards interval Merkle root and totals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardsInterval'
+  /auction/lots:
+    get:
+      tags: [Auction]
+      summary: List Auction Lots
+      operationId: listAuctionLotsProtocol
+      responses:
+        '200':
+          description: All auction lots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuctionLot'
+  /tokens/reth:
+    get:
+      tags: [Tokens]
+      summary: Get rETH Token State
+      operationId: getRethState
+      responses:
+        '200':
+          description: rETH token supply and exchange rate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenState'
+  /tokens/rpl:
+    get:
+      tags: [Tokens]
+      summary: Get RPL Token State
+      operationId: getRplState
+      responses:
+        '200':
+          description: RPL token supply and inflation state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenState'
+  /pdao/proposals:
+    get:
+      tags: [ProtocolDAO]
+      summary: List Protocol DAO Proposals
+      operationId: listProtocolDaoProposals
+      responses:
+        '200':
+          description: Proposals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DaoProposal'
+  /pdao/proposals/{id}:
+    get:
+      tags: [ProtocolDAO]
+      summary: Get Protocol DAO Proposal
+      operationId: getProtocolDaoProposal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Proposal detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaoProposal'
+  /odao/members:
+    get:
+      tags: [OracleDAO]
+      summary: List Oracle DAO Members
+      operationId: listOracleDaoMembersProtocol
+      responses:
+        '200':
+          description: Oracle DAO members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OracleDaoMember'
+  /settings/protocol:
+    get:
+      tags: [Settings]
+      summary: Get All Protocol Settings
+      operationId: getProtocolSettings
+      responses:
+        '200':
+          description: Effective protocol DAO settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolSettings'
+components:
+  parameters:
+    Address:
+      name: address
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Address'
+  schemas:
+    Address:
+      type: string
+      pattern: '^0x[a-fA-F0-9]{40}$'
+    EthAmount:
+      type: string
+      description: Amount in wei
+    PublicKey:
+      type: string
+      pattern: '^0x[a-fA-F0-9]{96}$'
+    DepositPool:
+      type: object
+      properties:
+        balance:
+          $ref: '#/components/schemas/EthAmount'
+        excess:
+          $ref: '#/components/schemas/EthAmount'
+        userBalance:
+          $ref: '#/components/schemas/EthAmount'
+    MinipoolDetails:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        nodeAddress:
+          $ref: '#/components/schemas/Address'
+        validatorPubkey:
+          $ref: '#/components/schemas/PublicKey'
+        status:
+          type: string
+        depositType:
+          type: string
+        nodeDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        userDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        nodeFee:
+          type: number
+          format: float
+        delegateAddress:
+          $ref: '#/components/schemas/Address'
+        useLatestDelegate:
+          type: boolean
+        finalised:
+          type: boolean
+    NodeDetails:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        registrationTime:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+        withdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        rplWithdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        rplStake:
+          $ref: '#/components/schemas/EthAmount'
+        effectiveRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        minimumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        maximumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        ethMatched:
+          $ref: '#/components/schemas/EthAmount'
+        ethMatchedLimit:
+          $ref: '#/components/schemas/EthAmount'
+        minipoolCount:
+          type: integer
+        smoothingPoolRegistered:
+          type: boolean
+    NetworkBalances:
+      type: object
+      properties:
+        block:
+          type: integer
+        totalEth:
+          $ref: '#/components/schemas/EthAmount'
+        stakingEth:
+          $ref: '#/components/schemas/EthAmount'
+        rethSupply:
+          $ref: '#/components/schemas/EthAmount'
+    NetworkFees:
+      type: object
+      properties:
+        nodeFee:
+          type: number
+          format: float
+        minNodeFee:
+          type: number
+          format: float
+        maxNodeFee:
+          type: number
+          format: float
+        targetNodeFee:
+          type: number
+          format: float
+    NetworkPrices:
+      type: object
+      properties:
+        block:
+          type: integer
+        rplPrice:
+          type: number
+          format: double
+    RewardsInterval:
+      type: object
+      properties:
+        index:
+          type: integer
+        merkleRoot:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        nodeRpl:
+          $ref: '#/components/schemas/EthAmount'
+        odaoRpl:
+          $ref: '#/components/schemas/EthAmount'
+        pdaoRpl:
+          $ref: '#/components/schemas/EthAmount'
+        smoothingPoolEth:
+          $ref: '#/components/schemas/EthAmount'
+    AuctionLot:
+      type: object
+      properties:
+        index:
+          type: integer
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        currentPrice:
+          $ref: '#/components/schemas/EthAmount'
+        totalRplAmount:
+          $ref: '#/components/schemas/EthAmount'
+    TokenState:
+      type: object
+      properties:
+        contractAddress:
+          $ref: '#/components/schemas/Address'
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        totalSupply:
+          $ref: '#/components/schemas/EthAmount'
+        exchangeRate:
+          type: number
+          format: double
+          description: Only populated for rETH
+    DaoProposal:
+      type: object
+      properties:
+        id:
+          type: integer
+        proposer:
+          $ref: '#/components/schemas/Address'
+        message:
+          type: string
+        state:
+          type: string
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        forVotes:
+          $ref: '#/components/schemas/EthAmount'
+        againstVotes:
+          $ref: '#/components/schemas/EthAmount'
+        abstainVotes:
+          $ref: '#/components/schemas/EthAmount'
+    OracleDaoMember:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        joinedTime:
+          type: string
+          format: date-time
+    ProtocolSettings:
+      type: object
+      additionalProperties:
+        type: string

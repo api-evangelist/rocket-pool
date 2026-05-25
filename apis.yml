@@ -1,0 +1,213 @@
+aid: rocket-pool
+name: Rocket Pool
+description: >-
+  Rocket Pool is a decentralized Ethereum liquid staking protocol that lets
+  anyone participate in Ethereum proof-of-stake without running a full 32 ETH
+  validator. Stakers deposit ETH and receive rETH, a rebasing-free
+  yield-bearing liquid staking token that automatically accrues consensus and
+  execution layer rewards and is freely composable across DeFi. On the supply
+  side, permissionless node operators can run a Rocket Pool minipool with as
+  little as 8 ETH (and a smaller RPL bond) — Rocket Pool pairs operator ETH
+  with the rETH-backed deposit pool to fund full beacon-chain validators, and
+  operators earn consensus rewards plus a commission from rETH users and RPL
+  inflation rewards. The protocol is governed on-chain through the Protocol
+  DAO (pDAO) and the Oracle DAO (oDAO) and is specified by Rocket Pool
+  Improvement Proposals (RPIPs). The reference node software stack is the
+  Smart Node (rocketpool CLI plus a Go daemon) distributed as Docker images,
+  alongside Go and TypeScript/JavaScript libraries (rocketpool-go,
+  rocketpool-js) for reading and writing protocol state directly against the
+  Rocket Pool smart contracts on Ethereum mainnet. Rocket Pool has no
+  centralized REST API, no hosted developer platform, no API keys, and no
+  pricing — all participation is on-chain via Ethereum JSON-RPC and the
+  protocol's deployed contracts.
+type: Index
+position: Provider
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Blockchain
+  - Ethereum
+  - Liquid Staking
+  - Proof of Stake
+  - DeFi
+  - Smart Contracts
+  - Node Operators
+  - Validator
+  - rETH
+  - RPL
+  - Minipool
+  - Decentralized Finance
+  - Decentralized Governance
+  - DAO
+  - Web3
+url: https://raw.githubusercontent.com/api-evangelist/rocket-pool/refs/heads/main/apis.yml
+created: '2026-05-24'
+modified: '2026-05-24'
+specificationVersion: '0.20'
+apis:
+  - aid: rocket-pool:smart-node-daemon-api
+    name: Rocket Pool Smart Node Daemon API
+    description: >-
+      The Smart Node daemon API is the local HTTP/IPC interface exposed by the
+      rocketpool-daemon Go service that ships with the Smart Node Docker stack.
+      The rocketpool CLI uses this API to manage node operator wallets,
+      minipools, megapools, RPL staking, rewards claims, smoothing pool
+      participation, and protocol/oracle DAO interactions. It is local-only,
+      authenticated by filesystem access, and is the contract between the CLI
+      front-end and the long-running node service.
+    humanURL: https://github.com/rocket-pool/smartnode
+    tags:
+      - Smart Node
+      - Node Operator
+      - CLI
+      - Minipool
+      - Megapool
+      - Wallet
+      - Rewards
+      - DAO
+    properties:
+      - type: SourceCode
+        url: https://github.com/rocket-pool/smartnode
+      - type: Documentation
+        url: https://docs.rocketpool.net/guides/node/responsibilities
+      - type: OpenAPI
+        url: openapi/rocket-pool-smart-node-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/node-operations.yaml
+      - type: Spectral
+        url: rules/rocket-pool-smart-node-rules.yml
+  - aid: rocket-pool:rocketpool-go-protocol-api
+    name: Rocket Pool Protocol API (rocketpool-go)
+    description: >-
+      The rocketpool-go library is a Golang client that wraps the Rocket Pool
+      smart contracts deployed on Ethereum and exposes a typed protocol API for
+      reading and writing network state: deposit pool, minipools, megapools,
+      node registrations, RPL staking, rewards trees, auctions, oracle DAO,
+      protocol DAO, tokens (rETH, RPL), and protocol settings. It is the
+      canonical Go interface to the protocol and is used by the Smart Node, by
+      Oracle DAO tooling, and by third-party integrators.
+    humanURL: https://github.com/rocket-pool/rocketpool-go
+    tags:
+      - Smart Contracts
+      - Go
+      - Library
+      - Protocol
+      - rETH
+      - RPL
+      - Minipool
+      - Auction
+      - DAO
+    properties:
+      - type: SourceCode
+        url: https://github.com/rocket-pool/rocketpool-go
+      - type: Documentation
+        url: https://docs.rocketpool.net/overview/contracts-integrations
+      - type: OpenAPI
+        url: openapi/rocket-pool-protocol-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/protocol-read.yaml
+  - aid: rocket-pool:rocketpool-js-protocol-api
+    name: Rocket Pool Protocol API (rocketpool-js)
+    description: >-
+      The rocketpool-js library is a TypeScript/JavaScript client for the
+      Rocket Pool protocol's deployed smart contracts. It mirrors much of the
+      Go library's surface and is intended for browser-based dApps, indexer
+      services, and integrations such as DeFi front-ends that need to read
+      rETH state or submit user deposits.
+    humanURL: https://github.com/rocket-pool/rocketpool-js
+    tags:
+      - Smart Contracts
+      - TypeScript
+      - JavaScript
+      - Library
+      - rETH
+      - dApp
+    properties:
+      - type: SourceCode
+        url: https://github.com/rocket-pool/rocketpool-js
+      - type: SDK
+        url: https://www.npmjs.com/package/@rocket-pool/contracts
+common:
+  - type: Website
+    url: https://rocketpool.net
+  - type: Documentation
+    url: https://docs.rocketpool.net
+  - type: GettingStarted
+    url: https://docs.rocketpool.net/guides/staking/overview
+  - type: NodeOperatorGuide
+    url: https://docs.rocketpool.net/guides/node/intro
+  - type: Overview
+    url: https://docs.rocketpool.net/overview/
+  - type: ContractsAndIntegrations
+    url: https://docs.rocketpool.net/overview/contracts-integrations
+  - type: GitHubOrganization
+    url: https://github.com/rocket-pool
+  - type: SourceCode
+    url: https://github.com/rocket-pool/rocketpool
+  - type: SmartNode
+    url: https://github.com/rocket-pool/smartnode
+  - type: SmartNodeInstaller
+    url: https://github.com/rocket-pool/smartnode-install
+  - type: GoSDK
+    url: https://github.com/rocket-pool/rocketpool-go
+  - type: JavaScriptSDK
+    url: https://github.com/rocket-pool/rocketpool-js
+  - type: NodeManagerCore
+    url: https://github.com/rocket-pool/node-manager-core
+  - type: OracleDAOTool
+    url: https://github.com/rocket-pool/odaotool
+  - type: TreeGen
+    url: https://github.com/rocket-pool/treegen
+  - type: Router
+    url: https://github.com/rocket-pool/rocketpool-router
+  - type: Subgraph
+    url: https://github.com/rocket-pool/rocket-pool-subgraph
+  - type: Improvements
+    url: https://github.com/rocket-pool/RPIPs
+  - type: Research
+    url: https://github.com/rocket-pool/rocketpool-research
+  - type: SnapshotStrategies
+    url: https://github.com/rocket-pool/snapshot-strategies
+  - type: LedgerPlugin
+    url: https://github.com/rocket-pool/ledger-app-plugin-rocketpool
+  - type: DockerImages
+    url: https://hub.docker.com/u/rocketpool
+  - type: GovernanceForum
+    url: https://dao.rocketpool.net
+  - type: Twitter
+    url: https://twitter.com/Rocket_Pool
+  - type: Discord
+    url: https://discord.gg/rocketpool
+  - type: License
+    url: https://github.com/rocket-pool/rocketpool/blob/master/LICENSE
+  - type: JSONSchema
+    url: json-schema/rocket-pool-minipool-schema.json
+  - type: JSONStructure
+    url: json-structure/rocket-pool-minipool-structure.json
+  - type: JSONLD
+    url: json-ld/rocket-pool-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/rocket-pool-vocabulary.yml
+integrations:
+  - name: Ethereum mainnet — settlement layer for rETH, RPL, minipools, and megapools
+  - name: Lighthouse — Ethereum consensus client supported by the Smart Node
+  - name: Prysm — Ethereum consensus client supported by the Smart Node
+  - name: Teku — Ethereum consensus client supported by the Smart Node
+  - name: Nimbus — Ethereum consensus client supported by the Smart Node
+  - name: Geth — Ethereum execution client supported by the Smart Node
+  - name: Nethermind — Ethereum execution client supported by the Smart Node
+  - name: Besu — Ethereum execution client supported by the Smart Node
+  - name: Reth — Ethereum execution client supported by the Smart Node
+  - name: MEV-Boost — Block builder relay integration for validator MEV rewards
+  - name: Uniswap — rETH/ETH liquidity for the Rocket Pool router
+  - name: Balancer — rETH/ETH liquidity for the Rocket Pool router
+  - name: Aave — rETH usable as collateral in lending markets
+  - name: Curve — rETH liquidity pools
+  - name: Snapshot — Off-chain signaling for protocol DAO governance
+  - name: Etherscan — Source verification of deployed contracts (verify-1.x repos)
+  - name: Ledger — Hardware wallet support via the Rocket Pool Ledger plugin
+  - name: The Graph — Indexed protocol data via rocket-pool-subgraph
+  - name: Layer-2 networks — rETH price oracles deployed on Arbitrum, Polygon, zkSync, Scroll
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

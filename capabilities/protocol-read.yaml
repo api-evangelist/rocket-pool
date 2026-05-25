@@ -1,0 +1,31 @@
+name: protocol-read
+title: Rocket Pool Protocol Read
+description: >-
+  Read-only view over the Rocket Pool protocol state — deposit pool, rETH
+  exchange rate, RPL price, network balances, rewards intervals, and on-chain
+  governance proposals. Backed by rocketpool-go (Go) and rocketpool-js
+  (TypeScript) bindings to the Rocket Pool contracts on Ethereum mainnet.
+api: rocket-pool:rocketpool-go-protocol-api
+inputs:
+  - name: nodeAddress
+    type: string
+    description: Optional node address to filter minipool/node lookups
+steps:
+  - id: read-deposit-pool
+    operation: getDepositPool
+    description: Read deposit pool balance, excess, and user balance
+  - id: read-network-balances
+    operation: getNetworkBalances
+    description: Read latest reported ETH backing and rETH supply
+  - id: read-network-prices
+    operation: getNetworkPrices
+    description: Read latest reported RPL price
+  - id: read-fees
+    operation: getNetworkFees
+    description: Read the current node commission curve
+  - id: read-rewards
+    operation: listRewardsIntervals
+    description: List rewards intervals and their Merkle roots
+  - id: read-reth
+    operation: getRethState
+    description: Read rETH total supply and exchange rate

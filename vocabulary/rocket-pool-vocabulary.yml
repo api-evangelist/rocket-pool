@@ -1,0 +1,86 @@
+name: Rocket Pool Vocabulary
+description: >-
+  Domain vocabulary for the Rocket Pool decentralized Ethereum liquid staking
+  protocol — the protocol's core entities, roles, tokens, and governance
+  artifacts.
+version: '0.1.0'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+concepts:
+  - term: rETH
+    definition: >-
+      Rocket Pool's liquid staking token. A non-rebasing ERC-20 whose exchange
+      rate against ETH increases as the underlying pool of staked ETH accrues
+      consensus and execution layer rewards. rETH is freely transferable and
+      composable across DeFi.
+  - term: RPL
+    definition: >-
+      Rocket Pool's governance and node-operator collateral token. Node
+      operators stake RPL to back rETH user deposits; RPL holders share in
+      protocol inflation through periodic rewards distributions.
+  - term: Minipool
+    definition: >-
+      A smart contract that pairs a node operator's ETH (8 ETH under the
+      current scheme) with rETH-user ETH to fund and operate a single
+      Ethereum beacon-chain validator.
+  - term: Megapool
+    definition: >-
+      A next-generation node operator contract that aggregates multiple
+      validators under a single node, replacing the one-contract-per-validator
+      minipool model with a shared megapool delegate.
+  - term: Node Operator
+    definition: >-
+      A permissionless participant who runs Rocket Pool node software and one
+      or more minipools or megapool validators, earning consensus rewards,
+      commission, and RPL inflation rewards.
+  - term: Smart Node
+    definition: >-
+      The reference Rocket Pool node software — a Go CLI (rocketpool),
+      long-running daemon (rocketpool-daemon), Docker stack, and Validator
+      Client wrapper distributed by the smartnode and smartnode-install
+      repositories.
+  - term: Smoothing Pool
+    definition: >-
+      An opt-in pool that aggregates priority-fee and MEV rewards from
+      participating node operators' execution clients and redistributes them
+      proportionally, smoothing the variance of MEV income.
+  - term: Deposit Pool
+    definition: >-
+      The protocol's holding contract for rETH-user ETH waiting to be matched
+      with node-operator capital to fund new validators.
+  - term: Protocol DAO
+    definition: >-
+      The on-chain governance body composed of Rocket Pool node operators who
+      have initialized voting power. The pDAO sets protocol parameters and
+      manages a treasury.
+  - term: Oracle DAO
+    definition: >-
+      A permissioned set of bonded oracles that report off-chain data on-chain
+      — beacon-chain balances, RPL price, and rewards trees — under economic
+      penalties for misbehavior.
+  - term: RPIP
+    definition: >-
+      Rocket Pool Improvement Proposal — the protocol's specification process
+      tracked in the rocket-pool/RPIPs repository.
+  - term: Rewards Tree
+    definition: >-
+      The Merkle tree produced each rewards interval that encodes per-node
+      RPL and smoothing-pool ETH allocations; node operators submit Merkle
+      proofs to claim.
+  - term: Express Ticket
+    definition: >-
+      A megapool-era queue-jumping primitive that lets a node operator skip
+      the deposit queue at the cost of an additional bond.
+  - term: Withdrawal Address
+    definition: >-
+      The Ethereum address that receives ETH consensus and execution layer
+      rewards on behalf of a Rocket Pool node operator.
+  - term: rETH Exchange Rate
+    definition: >-
+      The on-chain ratio of total backing ETH to outstanding rETH supply,
+      reported each oracle period.
+  - term: Saturn Upgrade
+    definition: >-
+      The protocol upgrade series introducing megapools, express tickets, and
+      revised tokenomics; tracked through verify-1.4 and saturn-fuzz repos.

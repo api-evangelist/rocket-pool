@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rocket-pool/main/json-schema/rocket-pool-minipool-schema.json",
+  "title": "RocketPoolMinipool",
+  "description": "A Rocket Pool minipool — a smart contract that pairs a node operator's ETH deposit with rETH user ETH to fund and operate a single Ethereum beacon-chain validator.",
+  "type": "object",
+  "required": ["address", "nodeAddress", "status", "depositType"],
+  "properties": {
+    "address": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "description": "Ethereum address of the minipool contract"
+    },
+    "nodeAddress": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$",
+      "description": "Ethereum address of the owning node operator"
+    },
+    "validatorPubkey": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{96}$",
+      "description": "BLS12-381 public key of the beacon-chain validator"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Initialized",
+        "Prelaunch",
+        "Staking",
+        "Withdrawable",
+        "Dissolved"
+      ]
+    },
+    "depositType": {
+      "type": "string",
+      "enum": ["None", "Full", "Half", "Empty", "Variable"]
+    },
+    "nodeDepositBalance": {
+      "type": "string",
+      "description": "Node operator's deposit in wei"
+    },
+    "userDepositBalance": {
+      "type": "string",
+      "description": "Pooled rETH-user deposit in wei"
+    },
+    "nodeFee": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Node commission rate as a fraction of validator rewards"
+    },
+    "createdTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "delegateAddress": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "useLatestDelegate": {
+      "type": "boolean"
+    },
+    "finalised": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-structure.org/draft-01/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rocket-pool/main/json-structure/rocket-pool-minipool-structure.json",
+  "name": "RocketPoolMinipool",
+  "type": "object",
+  "fields": [
+    { "name": "address", "type": "string", "format": "ethereum-address", "required": true },
+    { "name": "nodeAddress", "type": "string", "format": "ethereum-address", "required": true },
+    { "name": "validatorPubkey", "type": "string", "format": "bls-pubkey" },
+    { "name": "status", "type": "enum", "values": ["Initialized", "Prelaunch", "Staking", "Withdrawable", "Dissolved"], "required": true },
+    { "name": "depositType", "type": "enum", "values": ["None", "Full", "Half", "Empty", "Variable"], "required": true },
+    { "name": "nodeDepositBalance", "type": "string", "format": "wei" },
+    { "name": "userDepositBalance", "type": "string", "format": "wei" },
+    { "name": "nodeFee", "type": "number" },
+    { "name": "createdTime", "type": "string", "format": "date-time" },
+    { "name": "delegateAddress", "type": "string", "format": "ethereum-address" },
+    { "name": "useLatestDelegate", "type": "boolean" },
+    { "name": "finalised", "type": "boolean" }
+  ]
+}

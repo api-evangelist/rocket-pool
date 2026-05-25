@@ -1,0 +1,49 @@
+provider: rocket-pool
+name: Rocket Pool
+reviewed: '2026-05-24'
+reviewer: Kin Lane
+type: opensource
+tier: 2
+tier_reason: >-
+  Tier-2 opensource. Rocket Pool exposes a substantial developer-facing
+  surface — Smart Node CLI and Go daemon, rocketpool-go and rocketpool-js
+  libraries, audited Solidity contracts, an RPIP improvement-proposal
+  process, L2 price oracles on Arbitrum/Polygon/zkSync/Scroll, a public
+  Subgraph, Ledger plugin, and active research repo — but no hosted REST
+  API, no commercial pricing, no API keys, and no SLA. Participation is
+  entirely on-chain via Ethereum JSON-RPC against deployed contracts.
+summary: >-
+  Rocket Pool is the canonical decentralized Ethereum liquid staking
+  protocol: rETH for stakers, minipools (and now megapools) for
+  permissionless node operators with 8 ETH and an RPL bond. Reference
+  software is a Go Smart Node CLI/daemon distributed as Docker images,
+  with Go and TypeScript libraries wrapping the on-chain protocol.
+strengths:
+  - Genuinely decentralized validator set with permissionless node operation
+  - Strong on-chain governance: Protocol DAO, Oracle DAO, formal RPIP process
+  - Mature Smart Node CLI/daemon with deep node-operator tooling
+  - Active research repo and improvement-proposal pipeline
+  - L2 rETH price oracles deployed across Arbitrum, Polygon, zkSync, Scroll
+  - rETH widely integrated across DeFi (Aave, Uniswap, Balancer, Curve)
+gaps:
+  - No hosted REST/GraphQL API — third parties must run their own Ethereum node or use an indexer
+  - No public OpenAPI spec for the Smart Node daemon API (this repo provides a derived one)
+  - rocketpool-js is less actively maintained than rocketpool-go
+  - Documentation is heavy on user/operator guides, light on protocol-developer references outside the contracts repo
+artifacts:
+  - apis.yml
+  - openapi/rocket-pool-smart-node-openapi.yml
+  - openapi/rocket-pool-protocol-openapi.yml
+  - json-schema/rocket-pool-minipool-schema.json
+  - json-schema/rocket-pool-node-schema.json
+  - json-schema/rocket-pool-rewards-interval-schema.json
+  - json-structure/rocket-pool-minipool-structure.json
+  - json-ld/rocket-pool-context.jsonld
+  - capabilities/node-operations.yaml
+  - capabilities/protocol-read.yaml
+  - capabilities/rewards-claim.yaml
+  - examples/rocket-pool-minipool-status-example.json
+  - examples/rocket-pool-network-stats-example.json
+  - examples/rocket-pool-rewards-status-example.json
+  - rules/rocket-pool-smart-node-rules.yml
+  - vocabulary/rocket-pool-vocabulary.yml

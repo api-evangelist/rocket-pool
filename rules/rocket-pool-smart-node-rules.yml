@@ -1,0 +1,43 @@
+extends: ["spectral:oas"]
+rules:
+  operation-operationId-camel-case:
+    description: All operationIds use camelCase
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+  operation-summary-title-case:
+    description: Operation summaries are Title Case
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z0-9]*)(\\s[A-Z][a-zA-Z0-9]*)*$"
+  ethereum-address-pattern:
+    description: Properties named like an address must use the Ethereum 0x-hex pattern
+    severity: error
+    given: "$..properties[?(@property === 'address' || @property === 'nodeAddress' || @property === 'withdrawalAddress' || @property === 'rplWithdrawalAddress' || @property === 'delegateAddress' || @property === 'contractAddress')]"
+    then:
+      field: pattern
+      function: pattern
+      functionOptions:
+        match: "^\\^0x\\[a-fA-F0-9\\]\\{40\\}\\$$"
+  wei-string-amounts:
+    description: ETH/RPL amount fields are strings of wei, never numbers
+    severity: error
+    given: "$..properties[?(@property === 'nodeDepositBalance' || @property === 'userDepositBalance' || @property === 'rplStake' || @property === 'effectiveRplStake' || @property === 'totalValueLocked' || @property === 'rethSupply')]"
+    then:
+      field: type
+      function: enumeration
+      functionOptions:
+        values: ["string"]
+  tag-required:
+    description: All operations must declare a tag
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy

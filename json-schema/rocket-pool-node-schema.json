@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/rocket-pool/main/json-schema/rocket-pool-node-schema.json",
+  "title": "RocketPoolNode",
+  "description": "A registered Rocket Pool node operator, including its RPL stake, ETH-matched limits, and smoothing pool participation.",
+  "type": "object",
+  "required": ["address", "registrationTime"],
+  "properties": {
+    "address": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "registrationTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "withdrawalAddress": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "rplWithdrawalAddress": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "rplStake": {
+      "type": "string"
+    },
+    "effectiveRplStake": {
+      "type": "string"
+    },
+    "minimumRplStake": {
+      "type": "string"
+    },
+    "maximumRplStake": {
+      "type": "string"
+    },
+    "ethMatched": {
+      "type": "string"
+    },
+    "ethMatchedLimit": {
+      "type": "string"
+    },
+    "minipoolCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "smoothingPoolRegistered": {
+      "type": "boolean"
+    }
+  }
+}

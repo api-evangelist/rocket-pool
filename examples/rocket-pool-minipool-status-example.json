@@ -1,0 +1,12 @@
+{
+  "address": "0xabc1230000000000000000000000000000000123",
+  "nodeAddress": "0xdef4560000000000000000000000000000000456",
+  "validatorPubkey": "0x93247f2209abcafd3c9d2d3c4f5d3f5d3c4f5d3c4f5d3f5d3c4f5d3c4f5d3f5d3c4f5d3c4f5d3c4f5d3f5d3c4f5d3c4",
+  "status": "Staking",
+  "depositType": "Variable",
+  "nodeDepositBalance": "8000000000000000000",
+  "userDepositBalance": "24000000000000000000",
+  "nodeFee": 0.14,
+  "createdTime": "2025-09-12T17:32:11Z",
+  "useLatestDelegate": true
+}

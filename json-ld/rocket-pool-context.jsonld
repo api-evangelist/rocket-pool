@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@vocab": "https://schema.rocketpool.net/",
+    "schema": "http://schema.org/",
+    "rp": "https://schema.rocketpool.net/",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+
+    "Minipool": "rp:Minipool",
+    "Megapool": "rp:Megapool",
+    "Node": "rp:Node",
+    "OracleDAOMember": "rp:OracleDAOMember",
+    "ProtocolDAOProposal": "rp:ProtocolDAOProposal",
+    "RewardsInterval": "rp:RewardsInterval",
+    "AuctionLot": "rp:AuctionLot",
+    "Validator": "rp:Validator",
+    "Token": "rp:Token",
+
+    "address": "rp:address",
+    "nodeAddress": "rp:nodeAddress",
+    "validatorPubkey": "rp:validatorPubkey",
+    "status": "rp:status",
+    "depositType": "rp:depositType",
+    "nodeDepositBalance": { "@id": "rp:nodeDepositBalance", "@type": "rp:Wei" },
+    "userDepositBalance": { "@id": "rp:userDepositBalance", "@type": "rp:Wei" },
+    "nodeFee": { "@id": "rp:nodeFee", "@type": "xsd:decimal" },
+    "rplStake": { "@id": "rp:rplStake", "@type": "rp:Wei" },
+    "effectiveRplStake": { "@id": "rp:effectiveRplStake", "@type": "rp:Wei" },
+    "minimumRplStake": { "@id": "rp:minimumRplStake", "@type": "rp:Wei" },
+    "maximumRplStake": { "@id": "rp:maximumRplStake", "@type": "rp:Wei" },
+    "ethMatched": { "@id": "rp:ethMatched", "@type": "rp:Wei" },
+    "smoothingPoolRegistered": { "@id": "rp:smoothingPoolRegistered", "@type": "xsd:boolean" },
+    "timezone": "rp:timezone",
+    "registrationTime": { "@id": "rp:registrationTime", "@type": "xsd:dateTime" },
+    "rethExchangeRate": { "@id": "rp:rethExchangeRate", "@type": "xsd:double" },
+    "rplPriceEth": { "@id": "rp:rplPriceEth", "@type": "xsd:double" },
+    "merkleRoot": "rp:merkleRoot",
+    "intervalIndex": { "@id": "rp:intervalIndex", "@type": "xsd:integer" },
+
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}
