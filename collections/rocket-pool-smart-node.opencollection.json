@@ -1,0 +1,584 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Smart Node Daemon API",
+    "version": "1.16.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Wallet Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/wallet/status"
+          },
+          "docs": "Get Wallet Status"
+        },
+        {
+          "info": {
+            "name": "Initialize Node Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/wallet/init",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initialize Node Wallet"
+        },
+        {
+          "info": {
+            "name": "Recover Node Wallet From Mnemonic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/wallet/recover",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Recover Node Wallet From Mnemonic"
+        },
+        {
+          "info": {
+            "name": "Export Node Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/wallet/export"
+          },
+          "docs": "Export Node Wallet"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Node Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/node/status"
+          },
+          "docs": "Get Node Status"
+        },
+        {
+          "info": {
+            "name": "Get Eth1 And Eth2 Sync Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/node/sync"
+          },
+          "docs": "Get Eth1 And Eth2 Sync Progress"
+        },
+        {
+          "info": {
+            "name": "Register Node With Rocket Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register Node With Rocket Pool"
+        },
+        {
+          "info": {
+            "name": "Get Expected Node Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/node/rewards"
+          },
+          "docs": "Get Expected Node Rewards"
+        },
+        {
+          "info": {
+            "name": "Stake RPL Against Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/stake-rpl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stake RPL Against Node"
+        },
+        {
+          "info": {
+            "name": "Withdraw Staked RPL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/withdraw-rpl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw Staked RPL"
+        },
+        {
+          "info": {
+            "name": "Claim Available Node Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/claim-rewards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim Available Node Rewards"
+        },
+        {
+          "info": {
+            "name": "Opt Into Smoothing Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/join-smoothing-pool"
+          },
+          "docs": "Opt Into Smoothing Pool"
+        },
+        {
+          "info": {
+            "name": "Opt Out Of Smoothing Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/node/leave-smoothing-pool"
+          },
+          "docs": "Opt Out Of Smoothing Pool"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Minipool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Node Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/minipool/status"
+          },
+          "docs": "List Node Minipools"
+        },
+        {
+          "info": {
+            "name": "Stake Minipool After Scrub Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/minipool/:address/stake",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Stake Minipool After Scrub Check"
+        },
+        {
+          "info": {
+            "name": "Exit Minipool From Beacon Chain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/minipool/:address/exit",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Exit Minipool From Beacon Chain"
+        },
+        {
+          "info": {
+            "name": "Close Minipool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/minipool/:address/close",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Close Minipool"
+        },
+        {
+          "info": {
+            "name": "Distribute Minipool Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/minipool/:address/distribute-balance",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Distribute Minipool Balance"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Megapool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Megapool Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/megapool/status"
+          },
+          "docs": "Get Megapool Status"
+        },
+        {
+          "info": {
+            "name": "Create Megapool Validators",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/megapool/deposit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Megapool Validators"
+        },
+        {
+          "info": {
+            "name": "Exit Megapool Queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/megapool/exit-queue"
+          },
+          "docs": "Exit Megapool Queue"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Queue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Deposit And Minipool Queue Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/queue/status"
+          },
+          "docs": "Get Deposit And Minipool Queue Status"
+        },
+        {
+          "info": {
+            "name": "Process Deposit Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/queue/process"
+          },
+          "docs": "Process Deposit Pool"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Network Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/network/stats"
+          },
+          "docs": "Get Network Stats"
+        },
+        {
+          "info": {
+            "name": "Get Current Node Commission Rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/network/node-fee"
+          },
+          "docs": "Get Current Node Commission Rate"
+        },
+        {
+          "info": {
+            "name": "Get Current RPL Price In ETH",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/network/rpl-price"
+          },
+          "docs": "Get Current RPL Price In ETH"
+        },
+        {
+          "info": {
+            "name": "Get Currently Active DAO Proposals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/network/dao-proposals"
+          },
+          "docs": "Get Currently Active DAO Proposals"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get RPL Auction Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/auction/status"
+          },
+          "docs": "Get RPL Auction Status"
+        },
+        {
+          "info": {
+            "name": "List Open Auction Lots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/auction/lots"
+          },
+          "docs": "List Open Auction Lots"
+        },
+        {
+          "info": {
+            "name": "Bid On Auction Lot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/auction/bid-lot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bid On Auction Lot"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OracleDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Oracle DAO Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/odao/status"
+          },
+          "docs": "Get Oracle DAO Status"
+        },
+        {
+          "info": {
+            "name": "List Oracle DAO Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/odao/members"
+          },
+          "docs": "List Oracle DAO Members"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProtocolDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Protocol DAO Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/pdao/settings"
+          },
+          "docs": "Get Protocol DAO Settings"
+        },
+        {
+          "info": {
+            "name": "Get Node Voting Power",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/pdao/voting-power"
+          },
+          "docs": "Get Node Voting Power"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "View Available Rewards And Node Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/rewards/status"
+          },
+          "docs": "View Available Rewards And Node Credits"
+        },
+        {
+          "info": {
+            "name": "Claim All Rewards And Node Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/rewards/claim-all",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim All Rewards And Node Credits"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Smart Node Service Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/service/version"
+          },
+          "docs": "Get Smart Node Service Version"
+        },
+        {
+          "info": {
+            "name": "Get Smart Node Service Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/service/status"
+          },
+          "docs": "Get Smart Node Service Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

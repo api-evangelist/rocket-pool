@@ -1,0 +1,3025 @@
+{
+  "item": [
+    {
+      "id": "58f7ad0d-b03c-42d3-afca-67700af964e7",
+      "name": "Wallet",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8346b4a7-ed66-4a15-9921-a8009d24bd70",
+          "name": "Get Wallet Status",
+          "request": {
+            "name": "Get Wallet Status",
+            "description": {},
+            "url": {
+              "path": [
+                "wallet",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca4176eb-f551-449e-9c13-14bbe80001a1",
+              "name": "Wallet status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"walletInitialized\": false,\n  \"passwordSet\": true,\n  \"ensName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b1c38fd-ac0d-43b6-a589-244d56bafad3",
+          "name": "Initialize Node Wallet",
+          "request": {
+            "name": "Initialize Node Wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "wallet",
+                "init"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<password>\",\n  \"derivationPath\": \"<string>\",\n  \"walletIndex\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20cb59d5-9408-4c25-b5ad-1d3a253d2e9a",
+              "name": "Wallet initialized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<password>\",\n  \"derivationPath\": \"m/44'/60'/0'/0/0\",\n  \"walletIndex\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"walletInitialized\": false,\n  \"passwordSet\": true,\n  \"ensName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "497a43e5-5f94-4bbe-aee9-6cf60e152ad5",
+          "name": "Recover Node Wallet From Mnemonic",
+          "request": {
+            "name": "Recover Node Wallet From Mnemonic",
+            "description": {},
+            "url": {
+              "path": [
+                "wallet",
+                "recover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mnemonic\": \"<string>\",\n  \"password\": \"<password>\",\n  \"derivationPath\": \"<string>\",\n  \"walletIndex\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fcbfac4b-43be-4cdc-9e10-77ccdd1532f5",
+              "name": "Wallet recovered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "recover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mnemonic\": \"<string>\",\n  \"password\": \"<password>\",\n  \"derivationPath\": \"<string>\",\n  \"walletIndex\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"walletInitialized\": false,\n  \"passwordSet\": true,\n  \"ensName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7178701c-526f-4a70-931f-3e3c6653b7b4",
+          "name": "Export Node Wallet",
+          "request": {
+            "name": "Export Node Wallet",
+            "description": {},
+            "url": {
+              "path": [
+                "wallet",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f267c3e5-859b-4fde-b7ac-4cd7b1452717",
+              "name": "Wallet export payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallet",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"password\": \"string\",\n  \"wallet\": \"string\",\n  \"accountPrivateKey\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eb0da808-6cf2-4ed9-96f7-1dc14411a7c9",
+      "name": "Node",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1412a645-2458-43af-9e68-4d83afba7047",
+          "name": "Get Node Status",
+          "request": {
+            "name": "Get Node Status",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d539c0b6-6874-4945-84cf-0af1738bbab6",
+              "name": "Node status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"registered\": false,\n  \"trusted\": true,\n  \"withdrawalAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"rplWithdrawalAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"timezone\": \"America/Denver\",\n  \"balances\": {\n    \"eth\": \"32000000000000000000\",\n    \"rpl\": \"32000000000000000000\",\n    \"reth\": \"32000000000000000000\"\n  },\n  \"minipoolCount\": 2797,\n  \"rplStake\": \"32000000000000000000\",\n  \"effectiveRplStake\": \"32000000000000000000\",\n  \"minimumRplStake\": \"32000000000000000000\",\n  \"maximumRplStake\": \"32000000000000000000\",\n  \"feeDistributorInitialized\": true,\n  \"feeDistributorAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"smoothingPoolRegistrationState\": true,\n  \"smoothingPoolRegistrationChanged\": \"2024-10-17T08:53:44.060Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a3de4c1-a841-4fb6-9fca-b18503e93ef7",
+          "name": "Get Eth1 And Eth2 Sync Progress",
+          "request": {
+            "name": "Get Eth1 And Eth2 Sync Progress",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59e4d23b-68d7-43bb-b070-b8ea7c2f8435",
+              "name": "Sync state for the execution and consensus clients",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"eth1\": {\n    \"synced\": false,\n    \"progress\": 0.7688744659116138\n  },\n  \"eth2\": {\n    \"synced\": true,\n    \"progress\": 0.3986979263542684\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea1f4a4b-a906-4ff3-93ed-4c89d1393b71",
+          "name": "Register Node With Rocket Pool",
+          "request": {
+            "name": "Register Node With Rocket Pool",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d6f8a3e-e012-4de1-876e-38ca133c48dd",
+              "name": "Registration submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"timezone\": \"America/Denver\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ffe53ae-ec16-48b7-b894-d02d95c13b39",
+          "name": "Get Expected Node Rewards",
+          "request": {
+            "name": "Get Expected Node Rewards",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78d07a25-b6ac-44c3-b8bf-0165efbd06bb",
+              "name": "Expected RPL rewards at the next checkpoint",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextCheckpoint\": \"2016-03-07T22:00:41.293Z\",\n  \"estimatedRplRewards\": \"32000000000000000000\",\n  \"nodeRegistrationTime\": \"1956-11-04T20:15:10.731Z\",\n  \"rewardsInterval\": 3825\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b803a2b7-6a7f-4f37-8021-d29004cb5f1e",
+          "name": "Stake RPL Against Node",
+          "request": {
+            "name": "Stake RPL Against Node",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "stake-rpl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a8b843f-8b6a-4686-a699-ce24b45da99e",
+              "name": "Stake submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "stake-rpl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bed47e76-cbc8-4c72-8468-42c05e1f517c",
+          "name": "Withdraw Staked RPL",
+          "request": {
+            "name": "Withdraw Staked RPL",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "withdraw-rpl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c929db6-7cef-4dc6-8605-83976a8e8c65",
+              "name": "Withdraw submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "withdraw-rpl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdbe1588-d367-4807-a341-781669082dce",
+          "name": "Claim Available Node Rewards",
+          "request": {
+            "name": "Claim Available Node Rewards",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "claim-rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"indices\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c45f18a0-4c20-45ae-b782-414c70bdefa6",
+              "name": "Claim submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "claim-rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"indices\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ba6d9b1-32b3-4eca-b720-59e758081b24",
+          "name": "Opt Into Smoothing Pool",
+          "request": {
+            "name": "Opt Into Smoothing Pool",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "join-smoothing-pool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05b2e634-2ee0-4873-9c79-f7f3521246ec",
+              "name": "Opt-in submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "join-smoothing-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c007ee14-13f2-4518-bde0-f9b23b8a07ff",
+          "name": "Opt Out Of Smoothing Pool",
+          "request": {
+            "name": "Opt Out Of Smoothing Pool",
+            "description": {},
+            "url": {
+              "path": [
+                "node",
+                "leave-smoothing-pool"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75062846-cd6a-4829-a112-d5634b5949a8",
+              "name": "Opt-out submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "node",
+                    "leave-smoothing-pool"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fbc59951-665c-442b-be1a-832382776a99",
+      "name": "Minipool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7474dc25-3d43-4323-84b8-267c3c55f4fe",
+          "name": "List Node Minipools",
+          "request": {
+            "name": "List Node Minipools",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b213802-cb2e-4c28-9e2e-76e2d56c9808",
+              "name": "List of minipools belonging to the node",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"validatorPubkey\": \"0x36EE20f8414D4963b807b45cbA57ed0DD2c6Dba6041608F9A8EcC0E422dCb16010eD3AB0BaaaaaD4dFEBfE1A195C2aB8\",\n    \"status\": \"Withdrawable\",\n    \"depositType\": \"None\",\n    \"nodeDepositBalance\": \"32000000000000000000\",\n    \"userDepositBalance\": \"32000000000000000000\",\n    \"nodeFee\": 4417.549152930872,\n    \"createdTime\": \"2012-05-20T04:35:58.663Z\",\n    \"useLatestDelegate\": true\n  },\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"validatorPubkey\": \"0xD68a3EF83025931fFBcFb7e66BB770ae79EeD494AedEECb6F0b3fdE305Faef5f701ABBE0239Eed3184d5D5F550E2cCE0\",\n    \"status\": \"Staking\",\n    \"depositType\": \"Half\",\n    \"nodeDepositBalance\": \"32000000000000000000\",\n    \"userDepositBalance\": \"32000000000000000000\",\n    \"nodeFee\": 2333.047450436593,\n    \"createdTime\": \"1983-06-28T14:32:08.607Z\",\n    \"useLatestDelegate\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07c1a073-e608-4421-9ea3-8b06ee4bba8d",
+          "name": "Stake Minipool After Scrub Check",
+          "request": {
+            "name": "Stake Minipool After Scrub Check",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "stake"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b26a248d-8c01-4d82-848d-292670eeb424",
+              "name": "Stake submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "stake"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6704f6a-b4eb-439f-b54f-e09a9eac87d8",
+          "name": "Exit Minipool From Beacon Chain",
+          "request": {
+            "name": "Exit Minipool From Beacon Chain",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "exit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9fa53e71-298f-44cd-92f9-8becb6dc51e4",
+              "name": "Exit signed and broadcast",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "exit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89531616-18d1-4f5b-9580-72c92fdb49a1",
+          "name": "Close Minipool",
+          "request": {
+            "name": "Close Minipool",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fc9a973-86d0-4f9f-97f2-5f5c94b00ff9",
+              "name": "Close submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5292f69c-1838-4abb-b5ed-c123781729f1",
+          "name": "Distribute Minipool Balance",
+          "request": {
+            "name": "Distribute Minipool Balance",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "distribute-balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66a1f68c-88de-467d-9c8e-f4f34203b71c",
+              "name": "Distribute submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "distribute-balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8ca867e2-f733-40c2-bdf0-7c68c8407130",
+      "name": "Megapool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3a044940-d068-480e-ae06-037e85b71b4a",
+          "name": "Get Megapool Status",
+          "request": {
+            "name": "Get Megapool Status",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca4ecb8f-4acd-49bc-bae9-e9278dd0a887",
+              "name": "Megapool status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0x0000000000000000000000000000000000000000\",\n  \"validatorCount\": 4949,\n  \"debt\": \"32000000000000000000\",\n  \"useLatestDelegate\": true,\n  \"delegateAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"nodeCapital\": \"32000000000000000000\",\n  \"userCapital\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d162975-cad6-41ee-8b0b-69bb89078c82",
+          "name": "Create Megapool Validators",
+          "request": {
+            "name": "Create Megapool Validators",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "deposit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"validatorCount\": \"<integer>\",\n  \"useExpressTicket\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ff77b97-240a-4f74-979d-eb461c735437",
+              "name": "Deposit submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"validatorCount\": \"<integer>\",\n  \"useExpressTicket\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf8267c9-aafd-46e2-9a81-1057da8a63a4",
+          "name": "Exit Megapool Queue",
+          "request": {
+            "name": "Exit Megapool Queue",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "exit-queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e65bd50d-9b55-4e8f-875c-e0d08503420e",
+              "name": "Exit submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "exit-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5753c64c-bf59-498b-be86-311bad613d4e",
+      "name": "Queue",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "942da9a9-1fe7-4ec3-929d-0589ded918f2",
+          "name": "Get Deposit And Minipool Queue Status",
+          "request": {
+            "name": "Get Deposit And Minipool Queue Status",
+            "description": {},
+            "url": {
+              "path": [
+                "queue",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af6464a1-4a06-4107-9b34-194db9f3306f",
+              "name": "Queue status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queue",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositPoolBalance\": \"32000000000000000000\",\n  \"depositPoolExcess\": \"32000000000000000000\",\n  \"minipoolQueueLength\": 1880,\n  \"minipoolQueueCapacity\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84aa8b5a-4aaf-4ea2-a001-f42d9b9f3c8a",
+          "name": "Process Deposit Pool",
+          "request": {
+            "name": "Process Deposit Pool",
+            "description": {},
+            "url": {
+              "path": [
+                "queue",
+                "process"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f384ae90-08d3-4acf-894d-7d6121809165",
+              "name": "Process submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queue",
+                    "process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ce8a1b99-fa66-492e-8371-31bf4e2d41c4",
+      "name": "Network",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "51ff3e3d-365a-4fa0-a10a-86aee4eec3ad",
+          "name": "Get Network Stats",
+          "request": {
+            "name": "Get Network Stats",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bd224d3-6b75-4677-b85a-cd9850c95aca",
+              "name": "Network statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalValueLocked\": \"32000000000000000000\",\n  \"rethSupply\": \"32000000000000000000\",\n  \"rethExchangeRate\": 37.3133233004308,\n  \"rplPriceEth\": 1716.1542001323992,\n  \"totalRplStaked\": \"32000000000000000000\",\n  \"totalNodes\": 8308,\n  \"totalMinipools\": 8004,\n  \"totalMegapoolValidators\": 820\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37f5fbdf-208a-4b1e-82bb-77d8e2cc2e73",
+          "name": "Get Current Node Commission Rate",
+          "request": {
+            "name": "Get Current Node Commission Rate",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "node-fee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd615862-0020-49a4-ae10-c6ccb9f7d73f",
+              "name": "Current node fee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "node-fee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodeFee\": 0.14,\n  \"minNodeFee\": 8104.988470893017,\n  \"maxNodeFee\": 3623.1813518094923,\n  \"targetNodeFee\": 2335.806256537133\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c2ef61c-4436-41a2-9f2a-354532386b67",
+          "name": "Get Current RPL Price In ETH",
+          "request": {
+            "name": "Get Current RPL Price In ETH",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "rpl-price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fbf5652-1173-4291-ae04-8646c09bb3ec",
+              "name": "RPL price",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "rpl-price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"priceEth\": 5502.750993022088,\n  \"block\": 1079,\n  \"blockTime\": \"2013-02-15T14:52:40.869Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cca4de4-b82c-4ea2-8187-d265844da3ab",
+          "name": "Get Currently Active DAO Proposals",
+          "request": {
+            "name": "Get Currently Active DAO Proposals",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "dao-proposals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a67fd18-8a8e-4fa3-a254-4387f5a95fc1",
+              "name": "Active proposals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "dao-proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8419,\n    \"proposer\": \"0x0000000000000000000000000000000000000000\",\n    \"message\": \"string\",\n    \"state\": \"Vetoed\",\n    \"createdTime\": \"1996-02-29T13:37:14.406Z\"\n  },\n  {\n    \"id\": 848,\n    \"proposer\": \"0x0000000000000000000000000000000000000000\",\n    \"message\": \"string\",\n    \"state\": \"Succeeded\",\n    \"createdTime\": \"2025-08-09T05:27:45.256Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5a94d15e-fce1-4b3a-bb37-932ed01536e3",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c38daf18-6108-48c8-a73c-d5b30cc3a993",
+          "name": "View Available Rewards And Node Credits",
+          "request": {
+            "name": "View Available Rewards And Node Credits",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74ec4bc6-cddd-425e-9817-8c21038a81e9",
+              "name": "Rewards status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentInterval\": 1709,\n  \"intervalsToClaim\": [\n    7219,\n    9776\n  ],\n  \"unclaimedRpl\": \"32000000000000000000\",\n  \"unclaimedEth\": \"32000000000000000000\",\n  \"unclaimedSmoothingPool\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d40cda57-e345-4df5-8491-db877a39a002",
+          "name": "Claim All Rewards And Node Credits",
+          "request": {
+            "name": "Claim All Rewards And Node Credits",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "claim-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"intervals\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "44e153a0-fd2c-4dcc-a19e-5f38b4a4846e",
+              "name": "Claim submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "claim-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intervals\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "54f0918a-ad8c-402f-8303-f3ee348f6f20",
+      "name": "Auction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ac49870-3e3e-41d2-babc-8ebd3c04a093",
+          "name": "Get RPL Auction Status",
+          "request": {
+            "name": "Get RPL Auction Status",
+            "description": {},
+            "url": {
+              "path": [
+                "auction",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b22877b-0bb1-407e-af4e-d3f24a7ec043",
+              "name": "Auction status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lotCount\": 3405,\n  \"remainingRpl\": \"32000000000000000000\",\n  \"canCreateLot\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73700bce-5168-4ed4-8a09-0a79857e906e",
+          "name": "List Open Auction Lots",
+          "request": {
+            "name": "List Open Auction Lots",
+            "description": {},
+            "url": {
+              "path": [
+                "auction",
+                "lots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79c87bba-b0b9-43a4-ba8d-bfda7de81cf0",
+              "name": "Auction lots",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    "lots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"index\": 3649,\n    \"exists\": false,\n    \"startBlock\": 8062,\n    \"endBlock\": 5989,\n    \"startPrice\": \"32000000000000000000\",\n    \"currentPrice\": \"32000000000000000000\",\n    \"totalRplAmount\": \"32000000000000000000\",\n    \"claimedRplAmount\": \"32000000000000000000\",\n    \"remainingRplAmount\": \"32000000000000000000\"\n  },\n  {\n    \"index\": 2068,\n    \"exists\": false,\n    \"startBlock\": 7099,\n    \"endBlock\": 9293,\n    \"startPrice\": \"32000000000000000000\",\n    \"currentPrice\": \"32000000000000000000\",\n    \"totalRplAmount\": \"32000000000000000000\",\n    \"claimedRplAmount\": \"32000000000000000000\",\n    \"remainingRplAmount\": \"32000000000000000000\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce2c98f4-73db-4139-8c08-d04b16f7f585",
+          "name": "Bid On Auction Lot",
+          "request": {
+            "name": "Bid On Auction Lot",
+            "description": {},
+            "url": {
+              "path": [
+                "auction",
+                "bid-lot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lotIndex\": \"<integer>\",\n  \"amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a27dd5ad-eae1-4d9a-b1a3-d34d059718b8",
+              "name": "Bid submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    "bid-lot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lotIndex\": \"<integer>\",\n  \"amount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xe3e6b6716bc51dfAEbAeA9F0CD1B3Bb3f1C57ed09F3C3DC0FAdeA5fA5c8dEEEa\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6309,\n    \"safeGasLimit\": 9713\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "85ca7ca8-ea14-46d5-8a54-5ce8ef814c73",
+      "name": "OracleDAO",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb56b35d-95fa-4381-b076-a040daffc8a6",
+          "name": "Get Oracle DAO Status",
+          "request": {
+            "name": "Get Oracle DAO Status",
+            "description": {},
+            "url": {
+              "path": [
+                "odao",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a963605f-9d05-480f-9522-22b5e6c4b1ea",
+              "name": "Oracle DAO status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "odao",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"memberCount\": 8968,\n  \"proposalCount\": 121,\n  \"isMember\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52c70e33-535b-4b25-b227-c6a29cc11cf3",
+          "name": "List Oracle DAO Members",
+          "request": {
+            "name": "List Oracle DAO Members",
+            "description": {},
+            "url": {
+              "path": [
+                "odao",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5412b2f0-3831-4ddf-95b2-3c32d963292f",
+              "name": "Oracle DAO members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "odao",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"id\": \"string\",\n    \"url\": \"http://cseaaJuslUVLzrtMhPYxqGJrqwF.mczirwZjXWlACU1L\",\n    \"joinedTime\": \"1955-07-12T18:59:41.859Z\",\n    \"lastProposalTime\": \"1967-03-13T03:55:30.775Z\",\n    \"rplBondAmount\": \"32000000000000000000\"\n  },\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"id\": \"string\",\n    \"url\": \"https://QeyxXEjHpiKvKcbpWAxS.piQt8EdWrHfww4PS5QNWH\",\n    \"joinedTime\": \"1979-05-30T09:40:42.214Z\",\n    \"lastProposalTime\": \"1985-05-31T20:39:09.989Z\",\n    \"rplBondAmount\": \"32000000000000000000\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2b83b4c0-9f58-4b16-962f-4315d34dfafb",
+      "name": "ProtocolDAO",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc228727-8d23-4819-b6c3-c335d5cbe715",
+          "name": "Get Protocol DAO Settings",
+          "request": {
+            "name": "Get Protocol DAO Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "885410a0-5dbd-47de-a630-8f1fb19cd0a8",
+              "name": "Protocol DAO settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b14ac159-d15e-4b0f-9972-c8b06dcdf9df",
+          "name": "Get Node Voting Power",
+          "request": {
+            "name": "Get Node Voting Power",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "voting-power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acc9ad98-141e-4f85-8bc4-937d33d214c2",
+              "name": "Voting power",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "voting-power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"votingPower\": \"32000000000000000000\",\n  \"delegate\": \"0x0000000000000000000000000000000000000000\",\n  \"blockNumber\": 3362\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ebddb626-df74-4384-8171-10282345f867",
+      "name": "Service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24be0cbe-e0ae-42d8-9b19-88377b361d9f",
+          "name": "Get Smart Node Service Version",
+          "request": {
+            "name": "Get Smart Node Service Version",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "982816dd-6cb8-41a7-9367-94b33ee11be5",
+              "name": "Version information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"smartNodeVersion\": \"1.16.0\",\n  \"daemonVersion\": \"string\",\n  \"configVersion\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bf37d7a-458d-414e-9b21-e54e408f565b",
+          "name": "Get Smart Node Service Status",
+          "request": {
+            "name": "Get Smart Node Service Status",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a8b3296-5ed5-403a-8a58-277d182fa367",
+              "name": "Service status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"running\": true,\n  \"containers\": [\n    {\n      \"name\": \"string\",\n      \"state\": \"string\",\n      \"uptimeSeconds\": 2630\n    },\n    {\n      \"name\": \"string\",\n      \"state\": \"string\",\n      \"uptimeSeconds\": 5239\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "104daf66-acc9-469e-ad1c-d6c3c9a6a5ca",
+    "name": "Rocket Pool Smart Node Daemon API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack. This API is the contract used by the rocketpool CLI to drive node operator workflows: wallet management, minipool and megapool lifecycle, RPL staking, rewards claims, smoothing pool participation, and oracle DAO / protocol DAO actions. It is intended to be reached only over a local Unix socket or loopback HTTP endpoint inside the Smart Node Docker network — never exposed to the public internet. Surface derived from the rocketpool CLI command tree documented in the rocket-pool/smartnode README.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

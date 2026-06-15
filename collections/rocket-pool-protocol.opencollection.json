@@ -1,0 +1,347 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go)",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deposit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Deposit Pool Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/deposit/pool"
+          },
+          "docs": "Get Deposit Pool Status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Minipool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/minipools",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Minipools"
+        },
+        {
+          "info": {
+            "name": "Get Minipool Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/minipools/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Minipool Details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registered Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Registered Nodes"
+        },
+        {
+          "info": {
+            "name": "Get Node Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Node Details"
+        },
+        {
+          "info": {
+            "name": "List A Node's Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes/:address/minipools",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List A Node's Minipools"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Latest Reported Network Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/balances"
+          },
+          "docs": "Get Latest Reported Network Balances"
+        },
+        {
+          "info": {
+            "name": "Get Network Fee Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/fees"
+          },
+          "docs": "Get Network Fee Configuration"
+        },
+        {
+          "info": {
+            "name": "Get Latest Reported RPL Price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/prices"
+          },
+          "docs": "Get Latest Reported RPL Price"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Rewards Intervals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/rewards/intervals"
+          },
+          "docs": "List Rewards Intervals"
+        },
+        {
+          "info": {
+            "name": "Get Rewards Interval Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/rewards/intervals/:index",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Rewards Interval Detail"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Auction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Auction Lots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/auction/lots"
+          },
+          "docs": "List Auction Lots"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get rETH Token State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/tokens/reth"
+          },
+          "docs": "Get rETH Token State"
+        },
+        {
+          "info": {
+            "name": "Get RPL Token State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/tokens/rpl"
+          },
+          "docs": "Get RPL Token State"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProtocolDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Protocol DAO Proposals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/proposals"
+          },
+          "docs": "List Protocol DAO Proposals"
+        },
+        {
+          "info": {
+            "name": "Get Protocol DAO Proposal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/proposals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Protocol DAO Proposal"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "OracleDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Oracle DAO Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/odao/members"
+          },
+          "docs": "List Oracle DAO Members"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Protocol Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/settings/protocol"
+          },
+          "docs": "Get All Protocol Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
