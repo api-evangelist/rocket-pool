@@ -108,7 +108,7 @@ apis:
     properties:
       - type: SourceCode
         url: https://github.com/rocket-pool/rocketpool-js
-      - type: SDK
+      - type: SDKs
         url: https://www.npmjs.com/package/@rocket-pool/contracts
 common:
   - type: Website
