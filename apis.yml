@@ -111,6 +111,8 @@ apis:
       - type: SDKs
         url: https://www.npmjs.com/package/@rocket-pool/contracts
 common:
+  - type: DomainSecurity
+    url: security/rocket-pool-domain-security.yml
   - type: Website
     url: https://rocketpool.net
   - type: Documentation
