@@ -111,6 +111,8 @@ apis:
       - type: SDKs
         url: https://www.npmjs.com/package/@rocket-pool/contracts
 common:
+  - type: AgenticAccess
+    url: agentic-access/rocket-pool-agentic-access.yml
   - type: DomainSecurity
     url: security/rocket-pool-domain-security.yml
   - type: Website
