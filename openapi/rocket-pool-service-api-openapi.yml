@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction Service API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Service
+paths:
+  /service/version:
+    get:
+      tags:
+      - Service
+      summary: Get Smart Node Service Version
+      operationId: getServiceVersion
+      responses:
+        '200':
+          description: Version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceVersion'
+  /service/status:
+    get:
+      tags:
+      - Service
+      summary: Get Smart Node Service Status
+      operationId: getServiceStatus
+      responses:
+        '200':
+          description: Service status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceStatus'
+components:
+  schemas:
+    ServiceVersion:
+      type: object
+      properties:
+        smartNodeVersion:
+          type: string
+          example: 1.16.0
+        daemonVersion:
+          type: string
+        configVersion:
+          type: string
+    ServiceStatus:
+      type: object
+      properties:
+        running:
+          type: boolean
+        containers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              state:
+                type: string
+              uptimeSeconds:
+                type: integer

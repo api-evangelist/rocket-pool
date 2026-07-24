@@ -1,0 +1,230 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction Network API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Network
+paths:
+  /network/balances:
+    get:
+      tags:
+      - Network
+      summary: Get Latest Reported Network Balances
+      operationId: getNetworkBalances
+      responses:
+        '200':
+          description: Reported balances and rETH backing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkBalances'
+  /network/fees:
+    get:
+      tags:
+      - Network
+      summary: Get Network Fee Configuration
+      operationId: getNetworkFees
+      responses:
+        '200':
+          description: Current node commission curve
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkFees'
+  /network/prices:
+    get:
+      tags:
+      - Network
+      summary: Get Latest Reported RPL Price
+      operationId: getNetworkPrices
+      responses:
+        '200':
+          description: Reported RPL price and supply
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPrices'
+  /network/stats:
+    get:
+      tags:
+      - Network
+      summary: Get Network Stats
+      operationId: getNetworkStats
+      responses:
+        '200':
+          description: Network statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkStats'
+  /network/node-fee:
+    get:
+      tags:
+      - Network
+      summary: Get Current Node Commission Rate
+      operationId: getNetworkNodeFee
+      responses:
+        '200':
+          description: Current node fee
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeFee'
+  /network/rpl-price:
+    get:
+      tags:
+      - Network
+      summary: Get Current RPL Price In ETH
+      operationId: getRplPrice
+      responses:
+        '200':
+          description: RPL price
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RplPrice'
+  /network/dao-proposals:
+    get:
+      tags:
+      - Network
+      summary: Get Currently Active DAO Proposals
+      operationId: getActiveDaoProposals
+      responses:
+        '200':
+          description: Active proposals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DaoProposal'
+components:
+  schemas:
+    NetworkFees:
+      type: object
+      properties:
+        nodeFee:
+          type: number
+          format: float
+        minNodeFee:
+          type: number
+          format: float
+        maxNodeFee:
+          type: number
+          format: float
+        targetNodeFee:
+          type: number
+          format: float
+    NetworkStats:
+      type: object
+      properties:
+        totalValueLocked:
+          $ref: '#/components/schemas/EthAmount_2'
+        rethSupply:
+          $ref: '#/components/schemas/EthAmount_2'
+        rethExchangeRate:
+          type: number
+          format: double
+        rplPriceEth:
+          type: number
+          format: double
+        totalRplStaked:
+          $ref: '#/components/schemas/EthAmount_2'
+        totalNodes:
+          type: integer
+        totalMinipools:
+          type: integer
+        totalMegapoolValidators:
+          type: integer
+    RplPrice:
+      type: object
+      properties:
+        priceEth:
+          type: number
+          format: double
+        block:
+          type: integer
+        blockTime:
+          type: string
+          format: date-time
+    DaoProposal:
+      type: object
+      properties:
+        id:
+          type: integer
+        proposer:
+          $ref: '#/components/schemas/Address'
+        message:
+          type: string
+        state:
+          type: string
+          enum:
+          - Pending
+          - ActivePhase1
+          - ActivePhase2
+          - Cancelled
+          - Vetoed
+          - QuorumNotMet
+          - Defeated
+          - Succeeded
+          - Expired
+          - Executed
+        createdTime:
+          type: string
+          format: date-time
+    NetworkBalances:
+      type: object
+      properties:
+        block:
+          type: integer
+        totalEth:
+          $ref: '#/components/schemas/EthAmount'
+        stakingEth:
+          $ref: '#/components/schemas/EthAmount'
+        rethSupply:
+          $ref: '#/components/schemas/EthAmount'
+    NodeFee:
+      type: object
+      properties:
+        nodeFee:
+          type: number
+          format: float
+          example: 0.14
+        minNodeFee:
+          type: number
+          format: float
+        maxNodeFee:
+          type: number
+          format: float
+        targetNodeFee:
+          type: number
+          format: float
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    NetworkPrices:
+      type: object
+      properties:
+        block:
+          type: integer
+        rplPrice:
+          type: number
+          format: double
+    EthAmount:
+      type: string
+      description: Amount in wei

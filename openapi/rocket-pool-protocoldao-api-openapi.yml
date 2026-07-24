@@ -1,0 +1,128 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction ProtocolDAO API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: ProtocolDAO
+paths:
+  /pdao/proposals:
+    get:
+      tags:
+      - ProtocolDAO
+      summary: List Protocol DAO Proposals
+      operationId: listProtocolDaoProposals
+      responses:
+        '200':
+          description: Proposals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DaoProposal'
+  /pdao/proposals/{id}:
+    get:
+      tags:
+      - ProtocolDAO
+      summary: Get Protocol DAO Proposal
+      operationId: getProtocolDaoProposal
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Proposal detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DaoProposal'
+  /pdao/settings:
+    get:
+      tags:
+      - ProtocolDAO
+      summary: Get Protocol DAO Settings
+      operationId: getProtocolDaoSettings
+      responses:
+        '200':
+          description: Protocol DAO settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolDaoSettings'
+  /pdao/voting-power:
+    get:
+      tags:
+      - ProtocolDAO
+      summary: Get Node Voting Power
+      operationId: getProtocolDaoVotingPower
+      responses:
+        '200':
+          description: Voting power
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VotingPower'
+components:
+  schemas:
+    VotingPower:
+      type: object
+      properties:
+        votingPower:
+          $ref: '#/components/schemas/EthAmount_2'
+        delegate:
+          $ref: '#/components/schemas/Address_2'
+        blockNumber:
+          type: integer
+    DaoProposal:
+      type: object
+      properties:
+        id:
+          type: integer
+        proposer:
+          $ref: '#/components/schemas/Address'
+        message:
+          type: string
+        state:
+          type: string
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        forVotes:
+          $ref: '#/components/schemas/EthAmount'
+        againstVotes:
+          $ref: '#/components/schemas/EthAmount'
+        abstainVotes:
+          $ref: '#/components/schemas/EthAmount'
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+    ProtocolDaoSettings:
+      type: object
+      additionalProperties:
+        type: string
+      description: Map of protocol DAO setting name to current on-chain value
+    Address_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    EthAmount:
+      type: string
+      description: Amount in wei

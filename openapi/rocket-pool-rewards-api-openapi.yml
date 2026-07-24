@@ -1,0 +1,159 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction Rewards API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Rewards
+paths:
+  /rewards/intervals:
+    get:
+      tags:
+      - Rewards
+      summary: List Rewards Intervals
+      operationId: listRewardsIntervals
+      responses:
+        '200':
+          description: Past and current rewards intervals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RewardsInterval'
+  /rewards/intervals/{index}:
+    get:
+      tags:
+      - Rewards
+      summary: Get Rewards Interval Detail
+      operationId: getRewardsInterval
+      parameters:
+      - name: index
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Rewards interval Merkle root and totals
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardsInterval'
+  /rewards/status:
+    get:
+      tags:
+      - Rewards
+      summary: View Available Rewards And Node Credits
+      operationId: getRewardsStatus
+      responses:
+        '200':
+          description: Rewards status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardsStatus'
+  /rewards/claim-all:
+    post:
+      tags:
+      - Rewards
+      summary: Claim All Rewards And Node Credits
+      operationId: claimAllRewards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimAllRequest'
+      responses:
+        '200':
+          description: Claim submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+components:
+  schemas:
+    RewardsInterval:
+      type: object
+      properties:
+        index:
+          type: integer
+        merkleRoot:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        nodeRpl:
+          $ref: '#/components/schemas/EthAmount'
+        odaoRpl:
+          $ref: '#/components/schemas/EthAmount'
+        pdaoRpl:
+          $ref: '#/components/schemas/EthAmount'
+        smoothingPoolEth:
+          $ref: '#/components/schemas/EthAmount'
+    RewardsStatus:
+      type: object
+      properties:
+        currentInterval:
+          type: integer
+        intervalsToClaim:
+          type: array
+          items:
+            type: integer
+        unclaimedRpl:
+          $ref: '#/components/schemas/EthAmount_2'
+        unclaimedEth:
+          $ref: '#/components/schemas/EthAmount_2'
+        unclaimedSmoothingPool:
+          $ref: '#/components/schemas/EthAmount_2'
+    ClaimAllRequest:
+      type: object
+      properties:
+        intervals:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount_2'
+    TransactionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    EthAmount:
+      type: string
+      description: Amount in wei
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$

@@ -1,0 +1,137 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction Wallet API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Wallet
+paths:
+  /wallet/status:
+    get:
+      tags:
+      - Wallet
+      summary: Get Wallet Status
+      operationId: getWalletStatus
+      responses:
+        '200':
+          description: Wallet status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/init:
+    post:
+      tags:
+      - Wallet
+      summary: Initialize Node Wallet
+      operationId: initWallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletInitRequest'
+      responses:
+        '200':
+          description: Wallet initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/recover:
+    post:
+      tags:
+      - Wallet
+      summary: Recover Node Wallet From Mnemonic
+      operationId: recoverWallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletRecoverRequest'
+      responses:
+        '200':
+          description: Wallet recovered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/export:
+    get:
+      tags:
+      - Wallet
+      summary: Export Node Wallet
+      operationId: exportWallet
+      responses:
+        '200':
+          description: Wallet export payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletExport'
+components:
+  schemas:
+    WalletInitRequest:
+      type: object
+      required:
+      - password
+      properties:
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+          example: m/44'/60'/0'/0/0
+        walletIndex:
+          type: integer
+    WalletStatus:
+      type: object
+      properties:
+        accountAddress:
+          $ref: '#/components/schemas/Address'
+        walletInitialized:
+          type: boolean
+        passwordSet:
+          type: boolean
+        ensName:
+          type: string
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    WalletExport:
+      type: object
+      properties:
+        password:
+          type: string
+        wallet:
+          type: string
+          description: Encrypted JSON keystore
+        accountPrivateKey:
+          type: string
+    WalletRecoverRequest:
+      type: object
+      required:
+      - mnemonic
+      - password
+      properties:
+        mnemonic:
+          type: string
+          description: BIP-39 mnemonic phrase
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+        walletIndex:
+          type: integer

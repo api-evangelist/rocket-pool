@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Auction
+paths:
+  /auction/lots:
+    get:
+      tags:
+      - Auction
+      summary: List Auction Lots
+      operationId: listAuctionLotsProtocol
+      responses:
+        '200':
+          description: All auction lots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuctionLot'
+  /auction/status:
+    get:
+      tags:
+      - Auction
+      summary: Get RPL Auction Status
+      operationId: getAuctionStatus
+      responses:
+        '200':
+          description: Auction status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionStatus'
+  /auction/bid-lot:
+    post:
+      tags:
+      - Auction
+      summary: Bid On Auction Lot
+      operationId: bidAuctionLot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionBidRequest'
+      responses:
+        '200':
+          description: Bid submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+components:
+  schemas:
+    AuctionStatus:
+      type: object
+      properties:
+        lotCount:
+          type: integer
+        remainingRpl:
+          $ref: '#/components/schemas/EthAmount_2'
+        canCreateLot:
+          type: boolean
+    AuctionBidRequest:
+      type: object
+      required:
+      - lotIndex
+      - amount
+      properties:
+        lotIndex:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
+    AuctionLot:
+      type: object
+      properties:
+        index:
+          type: integer
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        currentPrice:
+          $ref: '#/components/schemas/EthAmount'
+        totalRplAmount:
+          $ref: '#/components/schemas/EthAmount'
+    TransactionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    EthAmount:
+      type: string
+      description: Amount in wei
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$

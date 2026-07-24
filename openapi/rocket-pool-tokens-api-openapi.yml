@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Protocol API (rocketpool-go) Auction Tokens API
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  version: 1.0.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/rocketpool-go
+servers:
+- url: https://protocol.rocketpool.example/v1
+  description: Logical base path — actual access is via Ethereum smart contracts
+tags:
+- name: Tokens
+paths:
+  /tokens/reth:
+    get:
+      tags:
+      - Tokens
+      summary: Get rETH Token State
+      operationId: getRethState
+      responses:
+        '200':
+          description: rETH token supply and exchange rate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenState'
+  /tokens/rpl:
+    get:
+      tags:
+      - Tokens
+      summary: Get RPL Token State
+      operationId: getRplState
+      responses:
+        '200':
+          description: RPL token supply and inflation state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenState'
+components:
+  schemas:
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+    EthAmount:
+      type: string
+      description: Amount in wei
+    TokenState:
+      type: object
+      properties:
+        contractAddress:
+          $ref: '#/components/schemas/Address'
+        symbol:
+          type: string
+        decimals:
+          type: integer
+        totalSupply:
+          $ref: '#/components/schemas/EthAmount'
+        exchangeRate:
+          type: number
+          format: double
+          description: Only populated for rETH
