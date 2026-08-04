@@ -1,0 +1,1024 @@
+openapi: 3.0.3
+info:
+  title: Rocket Pool Smart Node Daemon API
+  description: >-
+    Local HTTP API exposed by the rocketpool-daemon Go service that ships with
+    the Rocket Pool Smart Node Docker stack. This API is the contract used by
+    the rocketpool CLI to drive node operator workflows: wallet management,
+    minipool and megapool lifecycle, RPL staking, rewards claims, smoothing
+    pool participation, and oracle DAO / protocol DAO actions. It is intended
+    to be reached only over a local Unix socket or loopback HTTP endpoint
+    inside the Smart Node Docker network — never exposed to the public
+    internet. Surface derived from the rocketpool CLI command tree documented
+    in the rocket-pool/smartnode README.
+  version: 1.16.0
+  license:
+    name: GPL-3.0
+    url: https://github.com/rocket-pool/smartnode/blob/master/LICENSE
+  contact:
+    name: Rocket Pool
+    url: https://github.com/rocket-pool/smartnode
+servers:
+  - url: http://localhost:8080/api
+    description: Local Smart Node daemon (loopback)
+tags:
+  - name: Wallet
+  - name: Node
+  - name: Minipool
+  - name: Megapool
+  - name: Queue
+  - name: Network
+  - name: Rewards
+  - name: Auction
+  - name: OracleDAO
+  - name: ProtocolDAO
+  - name: Service
+paths:
+  /wallet/status:
+    get:
+      tags: [Wallet]
+      summary: Get Wallet Status
+      operationId: getWalletStatus
+      responses:
+        '200':
+          description: Wallet status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/init:
+    post:
+      tags: [Wallet]
+      summary: Initialize Node Wallet
+      operationId: initWallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletInitRequest'
+      responses:
+        '200':
+          description: Wallet initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/recover:
+    post:
+      tags: [Wallet]
+      summary: Recover Node Wallet From Mnemonic
+      operationId: recoverWallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletRecoverRequest'
+      responses:
+        '200':
+          description: Wallet recovered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletStatus'
+  /wallet/export:
+    get:
+      tags: [Wallet]
+      summary: Export Node Wallet
+      operationId: exportWallet
+      responses:
+        '200':
+          description: Wallet export payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletExport'
+  /node/status:
+    get:
+      tags: [Node]
+      summary: Get Node Status
+      operationId: getNodeStatus
+      responses:
+        '200':
+          description: Node status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeStatus'
+  /node/sync:
+    get:
+      tags: [Node]
+      summary: Get Eth1 And Eth2 Sync Progress
+      operationId: getNodeSync
+      responses:
+        '200':
+          description: Sync state for the execution and consensus clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncStatus'
+  /node/register:
+    post:
+      tags: [Node]
+      summary: Register Node With Rocket Pool
+      operationId: registerNode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeRegisterRequest'
+      responses:
+        '200':
+          description: Registration submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /node/rewards:
+    get:
+      tags: [Node]
+      summary: Get Expected Node Rewards
+      operationId: getNodeRewards
+      responses:
+        '200':
+          description: Expected RPL rewards at the next checkpoint
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeRewards'
+  /node/stake-rpl:
+    post:
+      tags: [Node]
+      summary: Stake RPL Against Node
+      operationId: stakeRpl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StakeRplRequest'
+      responses:
+        '200':
+          description: Stake submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /node/withdraw-rpl:
+    post:
+      tags: [Node]
+      summary: Withdraw Staked RPL
+      operationId: withdrawRpl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawRplRequest'
+      responses:
+        '200':
+          description: Withdraw submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /node/claim-rewards:
+    post:
+      tags: [Node]
+      summary: Claim Available Node Rewards
+      operationId: claimNodeRewards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimRewardsRequest'
+      responses:
+        '200':
+          description: Claim submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /node/join-smoothing-pool:
+    post:
+      tags: [Node]
+      summary: Opt Into Smoothing Pool
+      operationId: joinSmoothingPool
+      responses:
+        '200':
+          description: Opt-in submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /node/leave-smoothing-pool:
+    post:
+      tags: [Node]
+      summary: Opt Out Of Smoothing Pool
+      operationId: leaveSmoothingPool
+      responses:
+        '200':
+          description: Opt-out submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /minipool/status:
+    get:
+      tags: [Minipool]
+      summary: List Node Minipools
+      operationId: listMinipools
+      responses:
+        '200':
+          description: List of minipools belonging to the node
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Minipool'
+  /minipool/{address}/stake:
+    post:
+      tags: [Minipool]
+      summary: Stake Minipool After Scrub Check
+      operationId: stakeMinipool
+      parameters:
+        - $ref: '#/components/parameters/MinipoolAddress'
+      responses:
+        '200':
+          description: Stake submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /minipool/{address}/exit:
+    post:
+      tags: [Minipool]
+      summary: Exit Minipool From Beacon Chain
+      operationId: exitMinipool
+      parameters:
+        - $ref: '#/components/parameters/MinipoolAddress'
+      responses:
+        '200':
+          description: Exit signed and broadcast
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /minipool/{address}/close:
+    post:
+      tags: [Minipool]
+      summary: Close Minipool
+      operationId: closeMinipool
+      parameters:
+        - $ref: '#/components/parameters/MinipoolAddress'
+      responses:
+        '200':
+          description: Close submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /minipool/{address}/distribute-balance:
+    post:
+      tags: [Minipool]
+      summary: Distribute Minipool Balance
+      operationId: distributeMinipoolBalance
+      parameters:
+        - $ref: '#/components/parameters/MinipoolAddress'
+      responses:
+        '200':
+          description: Distribute submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /megapool/status:
+    get:
+      tags: [Megapool]
+      summary: Get Megapool Status
+      operationId: getMegapoolStatus
+      responses:
+        '200':
+          description: Megapool status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MegapoolStatus'
+  /megapool/deposit:
+    post:
+      tags: [Megapool]
+      summary: Create Megapool Validators
+      operationId: depositMegapool
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MegapoolDepositRequest'
+      responses:
+        '200':
+          description: Deposit submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /megapool/exit-queue:
+    post:
+      tags: [Megapool]
+      summary: Exit Megapool Queue
+      operationId: exitMegapoolQueue
+      responses:
+        '200':
+          description: Exit submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /queue/status:
+    get:
+      tags: [Queue]
+      summary: Get Deposit And Minipool Queue Status
+      operationId: getQueueStatus
+      responses:
+        '200':
+          description: Queue status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueStatus'
+  /queue/process:
+    post:
+      tags: [Queue]
+      summary: Process Deposit Pool
+      operationId: processQueue
+      responses:
+        '200':
+          description: Process submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /network/stats:
+    get:
+      tags: [Network]
+      summary: Get Network Stats
+      operationId: getNetworkStats
+      responses:
+        '200':
+          description: Network statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkStats'
+  /network/node-fee:
+    get:
+      tags: [Network]
+      summary: Get Current Node Commission Rate
+      operationId: getNetworkNodeFee
+      responses:
+        '200':
+          description: Current node fee
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeFee'
+  /network/rpl-price:
+    get:
+      tags: [Network]
+      summary: Get Current RPL Price In ETH
+      operationId: getRplPrice
+      responses:
+        '200':
+          description: RPL price
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RplPrice'
+  /network/dao-proposals:
+    get:
+      tags: [Network]
+      summary: Get Currently Active DAO Proposals
+      operationId: getActiveDaoProposals
+      responses:
+        '200':
+          description: Active proposals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DaoProposal'
+  /auction/status:
+    get:
+      tags: [Auction]
+      summary: Get RPL Auction Status
+      operationId: getAuctionStatus
+      responses:
+        '200':
+          description: Auction status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuctionStatus'
+  /auction/lots:
+    get:
+      tags: [Auction]
+      summary: List Open Auction Lots
+      operationId: listAuctionLots
+      responses:
+        '200':
+          description: Auction lots
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuctionLot'
+  /auction/bid-lot:
+    post:
+      tags: [Auction]
+      summary: Bid On Auction Lot
+      operationId: bidAuctionLot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuctionBidRequest'
+      responses:
+        '200':
+          description: Bid submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /odao/status:
+    get:
+      tags: [OracleDAO]
+      summary: Get Oracle DAO Status
+      operationId: getOracleDaoStatus
+      responses:
+        '200':
+          description: Oracle DAO status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OracleDaoStatus'
+  /odao/members:
+    get:
+      tags: [OracleDAO]
+      summary: List Oracle DAO Members
+      operationId: listOracleDaoMembers
+      responses:
+        '200':
+          description: Oracle DAO members
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OracleDaoMember'
+  /pdao/settings:
+    get:
+      tags: [ProtocolDAO]
+      summary: Get Protocol DAO Settings
+      operationId: getProtocolDaoSettings
+      responses:
+        '200':
+          description: Protocol DAO settings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolDaoSettings'
+  /pdao/voting-power:
+    get:
+      tags: [ProtocolDAO]
+      summary: Get Node Voting Power
+      operationId: getProtocolDaoVotingPower
+      responses:
+        '200':
+          description: Voting power
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VotingPower'
+  /rewards/status:
+    get:
+      tags: [Rewards]
+      summary: View Available Rewards And Node Credits
+      operationId: getRewardsStatus
+      responses:
+        '200':
+          description: Rewards status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardsStatus'
+  /rewards/claim-all:
+    post:
+      tags: [Rewards]
+      summary: Claim All Rewards And Node Credits
+      operationId: claimAllRewards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimAllRequest'
+      responses:
+        '200':
+          description: Claim submitted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+  /service/version:
+    get:
+      tags: [Service]
+      summary: Get Smart Node Service Version
+      operationId: getServiceVersion
+      responses:
+        '200':
+          description: Version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceVersion'
+  /service/status:
+    get:
+      tags: [Service]
+      summary: Get Smart Node Service Status
+      operationId: getServiceStatus
+      responses:
+        '200':
+          description: Service status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceStatus'
+components:
+  parameters:
+    MinipoolAddress:
+      name: address
+      in: path
+      required: true
+      description: The Ethereum address of the minipool contract
+      schema:
+        $ref: '#/components/schemas/Address'
+  schemas:
+    Address:
+      type: string
+      pattern: '^0x[a-fA-F0-9]{40}$'
+      example: '0x0000000000000000000000000000000000000000'
+    PublicKey:
+      type: string
+      pattern: '^0x[a-fA-F0-9]{96}$'
+      description: BLS12-381 validator public key
+    EthAmount:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: '^0x[a-fA-F0-9]{64}$'
+    TransactionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, error]
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
+    WalletStatus:
+      type: object
+      properties:
+        accountAddress:
+          $ref: '#/components/schemas/Address'
+        walletInitialized:
+          type: boolean
+        passwordSet:
+          type: boolean
+        ensName:
+          type: string
+    WalletInitRequest:
+      type: object
+      required: [password]
+      properties:
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+          example: "m/44'/60'/0'/0/0"
+        walletIndex:
+          type: integer
+    WalletRecoverRequest:
+      type: object
+      required: [mnemonic, password]
+      properties:
+        mnemonic:
+          type: string
+          description: BIP-39 mnemonic phrase
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+        walletIndex:
+          type: integer
+    WalletExport:
+      type: object
+      properties:
+        password:
+          type: string
+        wallet:
+          type: string
+          description: Encrypted JSON keystore
+        accountPrivateKey:
+          type: string
+    NodeStatus:
+      type: object
+      properties:
+        accountAddress:
+          $ref: '#/components/schemas/Address'
+        registered:
+          type: boolean
+        trusted:
+          type: boolean
+        withdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        rplWithdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        timezone:
+          type: string
+          example: America/Denver
+        balances:
+          type: object
+          properties:
+            eth:
+              $ref: '#/components/schemas/EthAmount'
+            rpl:
+              $ref: '#/components/schemas/EthAmount'
+            reth:
+              $ref: '#/components/schemas/EthAmount'
+        minipoolCount:
+          type: integer
+        rplStake:
+          $ref: '#/components/schemas/EthAmount'
+        effectiveRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        minimumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        maximumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        feeDistributorInitialized:
+          type: boolean
+        feeDistributorAddress:
+          $ref: '#/components/schemas/Address'
+        smoothingPoolRegistrationState:
+          type: boolean
+        smoothingPoolRegistrationChanged:
+          type: string
+          format: date-time
+    SyncStatus:
+      type: object
+      properties:
+        eth1:
+          $ref: '#/components/schemas/ClientSync'
+        eth2:
+          $ref: '#/components/schemas/ClientSync'
+    ClientSync:
+      type: object
+      properties:
+        synced:
+          type: boolean
+        progress:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+    NodeRegisterRequest:
+      type: object
+      required: [timezone]
+      properties:
+        timezone:
+          type: string
+          example: America/Denver
+    NodeRewards:
+      type: object
+      properties:
+        nextCheckpoint:
+          type: string
+          format: date-time
+        estimatedRplRewards:
+          $ref: '#/components/schemas/EthAmount'
+        nodeRegistrationTime:
+          type: string
+          format: date-time
+        rewardsInterval:
+          type: integer
+    StakeRplRequest:
+      type: object
+      required: [amount]
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount'
+    WithdrawRplRequest:
+      type: object
+      required: [amount]
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount'
+    ClaimRewardsRequest:
+      type: object
+      required: [indices]
+      properties:
+        indices:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount'
+    Minipool:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        validatorPubkey:
+          $ref: '#/components/schemas/PublicKey'
+        status:
+          type: string
+          enum:
+            - Initialized
+            - Prelaunch
+            - Staking
+            - Withdrawable
+            - Dissolved
+        depositType:
+          type: string
+          enum: [None, Full, Half, Empty, Variable]
+        nodeDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        userDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        nodeFee:
+          type: number
+          format: float
+          description: Node commission rate (0..1)
+        createdTime:
+          type: string
+          format: date-time
+        useLatestDelegate:
+          type: boolean
+    MegapoolStatus:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        validatorCount:
+          type: integer
+        debt:
+          $ref: '#/components/schemas/EthAmount'
+        useLatestDelegate:
+          type: boolean
+        delegateAddress:
+          $ref: '#/components/schemas/Address'
+        nodeCapital:
+          $ref: '#/components/schemas/EthAmount'
+        userCapital:
+          $ref: '#/components/schemas/EthAmount'
+    MegapoolDepositRequest:
+      type: object
+      required: [validatorCount]
+      properties:
+        validatorCount:
+          type: integer
+          minimum: 1
+        useExpressTicket:
+          type: boolean
+    QueueStatus:
+      type: object
+      properties:
+        depositPoolBalance:
+          $ref: '#/components/schemas/EthAmount'
+        depositPoolExcess:
+          $ref: '#/components/schemas/EthAmount'
+        minipoolQueueLength:
+          type: integer
+        minipoolQueueCapacity:
+          $ref: '#/components/schemas/EthAmount'
+    NetworkStats:
+      type: object
+      properties:
+        totalValueLocked:
+          $ref: '#/components/schemas/EthAmount'
+        rethSupply:
+          $ref: '#/components/schemas/EthAmount'
+        rethExchangeRate:
+          type: number
+          format: double
+        rplPriceEth:
+          type: number
+          format: double
+        totalRplStaked:
+          $ref: '#/components/schemas/EthAmount'
+        totalNodes:
+          type: integer
+        totalMinipools:
+          type: integer
+        totalMegapoolValidators:
+          type: integer
+    NodeFee:
+      type: object
+      properties:
+        nodeFee:
+          type: number
+          format: float
+          example: 0.14
+        minNodeFee:
+          type: number
+          format: float
+        maxNodeFee:
+          type: number
+          format: float
+        targetNodeFee:
+          type: number
+          format: float
+    RplPrice:
+      type: object
+      properties:
+        priceEth:
+          type: number
+          format: double
+        block:
+          type: integer
+        blockTime:
+          type: string
+          format: date-time
+    DaoProposal:
+      type: object
+      properties:
+        id:
+          type: integer
+        proposer:
+          $ref: '#/components/schemas/Address'
+        message:
+          type: string
+        state:
+          type: string
+          enum:
+            - Pending
+            - ActivePhase1
+            - ActivePhase2
+            - Cancelled
+            - Vetoed
+            - QuorumNotMet
+            - Defeated
+            - Succeeded
+            - Expired
+            - Executed
+        createdTime:
+          type: string
+          format: date-time
+    AuctionStatus:
+      type: object
+      properties:
+        lotCount:
+          type: integer
+        remainingRpl:
+          $ref: '#/components/schemas/EthAmount'
+        canCreateLot:
+          type: boolean
+    AuctionLot:
+      type: object
+      properties:
+        index:
+          type: integer
+        exists:
+          type: boolean
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        startPrice:
+          $ref: '#/components/schemas/EthAmount'
+        currentPrice:
+          $ref: '#/components/schemas/EthAmount'
+        totalRplAmount:
+          $ref: '#/components/schemas/EthAmount'
+        claimedRplAmount:
+          $ref: '#/components/schemas/EthAmount'
+        remainingRplAmount:
+          $ref: '#/components/schemas/EthAmount'
+    AuctionBidRequest:
+      type: object
+      required: [lotIndex, amount]
+      properties:
+        lotIndex:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/EthAmount'
+    OracleDaoStatus:
+      type: object
+      properties:
+        memberCount:
+          type: integer
+        proposalCount:
+          type: integer
+        isMember:
+          type: boolean
+    OracleDaoMember:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        id:
+          type: string
+        url:
+          type: string
+          format: uri
+        joinedTime:
+          type: string
+          format: date-time
+        lastProposalTime:
+          type: string
+          format: date-time
+        rplBondAmount:
+          $ref: '#/components/schemas/EthAmount'
+    ProtocolDaoSettings:
+      type: object
+      additionalProperties:
+        type: string
+      description: Map of protocol DAO setting name to current on-chain value
+    VotingPower:
+      type: object
+      properties:
+        votingPower:
+          $ref: '#/components/schemas/EthAmount'
+        delegate:
+          $ref: '#/components/schemas/Address'
+        blockNumber:
+          type: integer
+    RewardsStatus:
+      type: object
+      properties:
+        currentInterval:
+          type: integer
+        intervalsToClaim:
+          type: array
+          items:
+            type: integer
+        unclaimedRpl:
+          $ref: '#/components/schemas/EthAmount'
+        unclaimedEth:
+          $ref: '#/components/schemas/EthAmount'
+        unclaimedSmoothingPool:
+          $ref: '#/components/schemas/EthAmount'
+    ClaimAllRequest:
+      type: object
+      properties:
+        intervals:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount'
+    ServiceVersion:
+      type: object
+      properties:
+        smartNodeVersion:
+          type: string
+          example: 1.16.0
+        daemonVersion:
+          type: string
+        configVersion:
+          type: string
+    ServiceStatus:
+      type: object
+      properties:
+        running:
+          type: boolean
+        containers:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              state:
+                type: string
+              uptimeSeconds:
+                type: integer
