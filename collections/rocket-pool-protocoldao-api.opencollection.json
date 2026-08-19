@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction ProtocolDAO API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProtocolDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Protocol DAO Proposals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/proposals"
+          },
+          "docs": "List Protocol DAO Proposals"
+        },
+        {
+          "info": {
+            "name": "Get Protocol DAO Proposal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/proposals/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Protocol DAO Proposal"
+        },
+        {
+          "info": {
+            "name": "Get Protocol DAO Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/settings"
+          },
+          "docs": "Get Protocol DAO Settings"
+        },
+        {
+          "info": {
+            "name": "Get Node Voting Power",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/pdao/voting-power"
+          },
+          "docs": "Get Node Voting Power"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

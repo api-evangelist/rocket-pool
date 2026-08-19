@@ -1,0 +1,515 @@
+{
+  "item": [
+    {
+      "id": "e7a92e0e-28b7-4c16-8ea5-48a4d0a9b8c7",
+      "name": "Network",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff06b9f0-2d14-4cf3-9fd5-693fd9341ff4",
+          "name": "Get Latest Reported Network Balances",
+          "request": {
+            "name": "Get Latest Reported Network Balances",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5c47fcf-1756-45b7-9ff6-04acc890b9f1",
+              "name": "Reported balances and rETH backing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": 1850,\n  \"totalEth\": \"string\",\n  \"stakingEth\": \"string\",\n  \"rethSupply\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c44df79-abfc-4cff-823a-b71ab2c53c34",
+          "name": "Get Network Fee Configuration",
+          "request": {
+            "name": "Get Network Fee Configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6df02b8f-3b14-4ec3-94d0-9a91850ddcd5",
+              "name": "Current node commission curve",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodeFee\": 8383.71899994463,\n  \"minNodeFee\": 2353.378103804442,\n  \"maxNodeFee\": 1092.2337579454688,\n  \"targetNodeFee\": 8562.303856887343\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "576cfe12-d7e6-460b-a254-8310136fe024",
+          "name": "Get Latest Reported RPL Price",
+          "request": {
+            "name": "Get Latest Reported RPL Price",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "391087d4-dcee-46b4-ad72-f798df1351be",
+              "name": "Reported RPL price and supply",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"block\": 4479,\n  \"rplPrice\": 8205.158446254645\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f00957f8-a2b9-4e4c-8340-c6012f49f225",
+          "name": "Get Network Stats",
+          "request": {
+            "name": "Get Network Stats",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82461bfc-0363-44e2-b98b-688a2098cb21",
+              "name": "Network statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalValueLocked\": \"32000000000000000000\",\n  \"rethSupply\": \"32000000000000000000\",\n  \"rethExchangeRate\": 5070.406508132824,\n  \"rplPriceEth\": 9913.602983190647,\n  \"totalRplStaked\": \"32000000000000000000\",\n  \"totalNodes\": 7444,\n  \"totalMinipools\": 2011,\n  \"totalMegapoolValidators\": 4588\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13afe86f-7c47-46b5-ac73-23ee4fd7c2cd",
+          "name": "Get Current Node Commission Rate",
+          "request": {
+            "name": "Get Current Node Commission Rate",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "node-fee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2652542c-db62-4d63-a240-ef15e51a64e2",
+              "name": "Current node fee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "node-fee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nodeFee\": 0.14,\n  \"minNodeFee\": 3822.199753990901,\n  \"maxNodeFee\": 4877.240292396542,\n  \"targetNodeFee\": 5836.716903059251\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bfb1645-192a-4f32-a648-45a98b4e563a",
+          "name": "Get Current RPL Price In ETH",
+          "request": {
+            "name": "Get Current RPL Price In ETH",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "rpl-price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4e9975c-5dee-42de-9e5e-26d21874c2a4",
+              "name": "RPL price",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "rpl-price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"priceEth\": 1557.2103824922956,\n  \"block\": 3998,\n  \"blockTime\": \"2012-12-12T04:36:33.850Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "def3a71d-114c-4177-9cce-f7b348cac66d",
+          "name": "Get Currently Active DAO Proposals",
+          "request": {
+            "name": "Get Currently Active DAO Proposals",
+            "description": {},
+            "url": {
+              "path": [
+                "network",
+                "dao-proposals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "814ab691-98c4-4600-9101-809a23e55ce4",
+              "name": "Active proposals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network",
+                    "dao-proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6876,\n    \"proposer\": \"0x0000000000000000000000000000000000000000\",\n    \"message\": \"string\",\n    \"state\": \"Executed\",\n    \"createdTime\": \"1951-03-18T14:56:13.520Z\"\n  },\n  {\n    \"id\": 9482,\n    \"proposer\": \"0x0000000000000000000000000000000000000000\",\n    \"message\": \"string\",\n    \"state\": \"ActivePhase2\",\n    \"createdTime\": \"1949-10-09T18:15:39.024Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b2eed631-c5cb-4718-a608-5bfd015cefad",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Queue API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Deposit And Minipool Queue Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/queue/status"
+          },
+          "docs": "Get Deposit And Minipool Queue Status"
+        },
+        {
+          "info": {
+            "name": "Process Deposit Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/queue/process"
+          },
+          "docs": "Process Deposit Pool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

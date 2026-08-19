@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Service API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Smart Node Service Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/service/version"
+          },
+          "docs": "Get Smart Node Service Version"
+        },
+        {
+          "info": {
+            "name": "Get Smart Node Service Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/service/status"
+          },
+          "docs": "Get Smart Node Service Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

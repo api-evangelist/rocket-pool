@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Settings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Settings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Protocol Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/settings/protocol"
+          },
+          "docs": "Get All Protocol Settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

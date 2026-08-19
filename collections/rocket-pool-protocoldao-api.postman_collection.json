@@ -1,0 +1,326 @@
+{
+  "item": [
+    {
+      "id": "5e2f62f2-1c06-4014-9fe3-920c70a15719",
+      "name": "ProtocolDAO",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31f9b601-638d-48e8-a2aa-d249d74acd6b",
+          "name": "List Protocol DAO Proposals",
+          "request": {
+            "name": "List Protocol DAO Proposals",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "proposals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc7e238c-2aac-4717-80cb-d20d890cd7b5",
+              "name": "Proposals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "proposals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8316,\n    \"proposer\": \"0x7fB5c534cA006AEe21cBD8CC24b22afD4eCb215b\",\n    \"message\": \"string\",\n    \"state\": \"string\",\n    \"startBlock\": 7542,\n    \"endBlock\": 1183,\n    \"forVotes\": \"string\",\n    \"againstVotes\": \"string\",\n    \"abstainVotes\": \"string\"\n  },\n  {\n    \"id\": 8999,\n    \"proposer\": \"0xB224205d120Dfbec55f7bC9caD74D2f4CAdc2a46\",\n    \"message\": \"string\",\n    \"state\": \"string\",\n    \"startBlock\": 6494,\n    \"endBlock\": 6483,\n    \"forVotes\": \"string\",\n    \"againstVotes\": \"string\",\n    \"abstainVotes\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c58362bd-1e79-4708-be3a-9ba141403f5f",
+          "name": "Get Protocol DAO Proposal",
+          "request": {
+            "name": "Get Protocol DAO Proposal",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "proposals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa501e60-e09a-4542-b070-4c6034eab31d",
+              "name": "Proposal detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "proposals",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5026,\n  \"proposer\": \"0x62cbFfA74d8B02C789C5b389BB8c64aAAA1Fef2d\",\n  \"message\": \"string\",\n  \"state\": \"string\",\n  \"startBlock\": 3162,\n  \"endBlock\": 1000,\n  \"forVotes\": \"string\",\n  \"againstVotes\": \"string\",\n  \"abstainVotes\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ea08a9c-6777-4014-9102-912fc818ae8a",
+          "name": "Get Protocol DAO Settings",
+          "request": {
+            "name": "Get Protocol DAO Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e72b38e-9d83-440f-a466-a0972473e858",
+              "name": "Protocol DAO settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": \"string\",\n  \"key_2\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99713e50-bf60-499a-91bb-ae3d7dd3ed3f",
+          "name": "Get Node Voting Power",
+          "request": {
+            "name": "Get Node Voting Power",
+            "description": {},
+            "url": {
+              "path": [
+                "pdao",
+                "voting-power"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50fb7c0d-ebc0-4413-a411-cebb70269329",
+              "name": "Voting power",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pdao",
+                    "voting-power"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"votingPower\": \"32000000000000000000\",\n  \"delegate\": \"0x0000000000000000000000000000000000000000\",\n  \"blockNumber\": 1282\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "472a6a24-ba6f-4be5-9023-aac13868e6c5",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction ProtocolDAO API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

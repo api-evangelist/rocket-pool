@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Node",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registered Nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Registered Nodes"
+        },
+        {
+          "info": {
+            "name": "Get Node Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Node Details"
+        },
+        {
+          "info": {
+            "name": "List A Node's Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/nodes/:address/minipools",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List A Node's Minipools"
+        },
+        {
+          "info": {
+            "name": "Get Node Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/node/status"
+          },
+          "docs": "Get Node Status"
+        },
+        {
+          "info": {
+            "name": "Get Eth1 And Eth2 Sync Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/node/sync"
+          },
+          "docs": "Get Eth1 And Eth2 Sync Progress"
+        },
+        {
+          "info": {
+            "name": "Register Node With Rocket Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register Node With Rocket Pool"
+        },
+        {
+          "info": {
+            "name": "Get Expected Node Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/node/rewards"
+          },
+          "docs": "Get Expected Node Rewards"
+        },
+        {
+          "info": {
+            "name": "Stake RPL Against Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/stake-rpl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stake RPL Against Node"
+        },
+        {
+          "info": {
+            "name": "Withdraw Staked RPL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/withdraw-rpl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw Staked RPL"
+        },
+        {
+          "info": {
+            "name": "Claim Available Node Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/claim-rewards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim Available Node Rewards"
+        },
+        {
+          "info": {
+            "name": "Opt Into Smoothing Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/join-smoothing-pool"
+          },
+          "docs": "Opt Into Smoothing Pool"
+        },
+        {
+          "info": {
+            "name": "Opt Out Of Smoothing Pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/node/leave-smoothing-pool"
+          },
+          "docs": "Opt Out Of Smoothing Pool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

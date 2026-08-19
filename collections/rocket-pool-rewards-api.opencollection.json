@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Rewards API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Rewards Intervals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/rewards/intervals"
+          },
+          "docs": "List Rewards Intervals"
+        },
+        {
+          "info": {
+            "name": "Get Rewards Interval Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/rewards/intervals/:index",
+            "params": [
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Rewards Interval Detail"
+        },
+        {
+          "info": {
+            "name": "View Available Rewards And Node Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/rewards/status"
+          },
+          "docs": "View Available Rewards And Node Credits"
+        },
+        {
+          "info": {
+            "name": "Claim All Rewards And Node Credits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/rewards/claim-all",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Claim All Rewards And Node Credits"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

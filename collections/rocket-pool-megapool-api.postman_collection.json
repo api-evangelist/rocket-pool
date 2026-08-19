@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "a3dc99a7-ae59-40f4-9330-2027c1903f30",
+      "name": "Megapool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48bf7e61-639f-481c-a2bf-9cf7f654a79b",
+          "name": "Get Megapool Status",
+          "request": {
+            "name": "Get Megapool Status",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0e8bb9e-12aa-4466-8e0a-f8e61100149e",
+              "name": "Megapool status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0x0000000000000000000000000000000000000000\",\n  \"validatorCount\": 6194,\n  \"debt\": \"32000000000000000000\",\n  \"useLatestDelegate\": true,\n  \"delegateAddress\": \"0x0000000000000000000000000000000000000000\",\n  \"nodeCapital\": \"32000000000000000000\",\n  \"userCapital\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60f180df-ab7b-432f-8f3a-d7cc2af44156",
+          "name": "Create Megapool Validators",
+          "request": {
+            "name": "Create Megapool Validators",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "deposit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"validatorCount\": \"<integer>\",\n  \"useExpressTicket\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b595d8f-0ebd-46e0-9a92-3935cc7e4c24",
+              "name": "Deposit submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "deposit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"validatorCount\": \"<integer>\",\n  \"useExpressTicket\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xAEAcf0D73bA1D9CdDaabC9c57FDACDFFBB220dEA34BFd77daAcBbc0372F7b8fe\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6428,\n    \"safeGasLimit\": 7900\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "27669a36-ef2a-415c-9e55-f42116b76269",
+          "name": "Exit Megapool Queue",
+          "request": {
+            "name": "Exit Megapool Queue",
+            "description": {},
+            "url": {
+              "path": [
+                "megapool",
+                "exit-queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "582c5bc0-eda9-4ae2-8037-404a94dcfa00",
+              "name": "Exit submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "megapool",
+                    "exit-queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xAEAcf0D73bA1D9CdDaabC9c57FDACDFFBB220dEA34BFd77daAcBbc0372F7b8fe\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6428,\n    \"safeGasLimit\": 7900\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8f526e6-c3b0-45e8-95b3-3b3b2fcc607a",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Megapool API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

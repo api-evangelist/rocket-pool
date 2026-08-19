@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Wallet API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Wallet Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/wallet/status"
+          },
+          "docs": "Get Wallet Status"
+        },
+        {
+          "info": {
+            "name": "Initialize Node Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/wallet/init",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initialize Node Wallet"
+        },
+        {
+          "info": {
+            "name": "Recover Node Wallet From Mnemonic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/wallet/recover",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Recover Node Wallet From Mnemonic"
+        },
+        {
+          "info": {
+            "name": "Export Node Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/wallet/export"
+          },
+          "docs": "Export Node Wallet"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

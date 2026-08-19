@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Network API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Latest Reported Network Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/balances"
+          },
+          "docs": "Get Latest Reported Network Balances"
+        },
+        {
+          "info": {
+            "name": "Get Network Fee Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/fees"
+          },
+          "docs": "Get Network Fee Configuration"
+        },
+        {
+          "info": {
+            "name": "Get Latest Reported RPL Price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/prices"
+          },
+          "docs": "Get Latest Reported RPL Price"
+        },
+        {
+          "info": {
+            "name": "Get Network Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/stats"
+          },
+          "docs": "Get Network Stats"
+        },
+        {
+          "info": {
+            "name": "Get Current Node Commission Rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/node-fee"
+          },
+          "docs": "Get Current Node Commission Rate"
+        },
+        {
+          "info": {
+            "name": "Get Current RPL Price In ETH",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/rpl-price"
+          },
+          "docs": "Get Current RPL Price In ETH"
+        },
+        {
+          "info": {
+            "name": "Get Currently Active DAO Proposals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/network/dao-proposals"
+          },
+          "docs": "Get Currently Active DAO Proposals"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

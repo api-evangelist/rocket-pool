@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Minipool API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Minipool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/minipools",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Minipools"
+        },
+        {
+          "info": {
+            "name": "Get Minipool Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/minipools/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Minipool Details"
+        },
+        {
+          "info": {
+            "name": "List Node Minipools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/minipool/status"
+          },
+          "docs": "List Node Minipools"
+        },
+        {
+          "info": {
+            "name": "Stake Minipool After Scrub Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/minipool/:address/stake",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Stake Minipool After Scrub Check"
+        },
+        {
+          "info": {
+            "name": "Exit Minipool From Beacon Chain",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/minipool/:address/exit",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Exit Minipool From Beacon Chain"
+        },
+        {
+          "info": {
+            "name": "Close Minipool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/minipool/:address/close",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Close Minipool"
+        },
+        {
+          "info": {
+            "name": "Distribute Minipool Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/minipool/:address/distribute-balance",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "The Ethereum address of the minipool contract"
+              }
+            ]
+          },
+          "docs": "Distribute Minipool Balance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

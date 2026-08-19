@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "5c7d4cfe-1fb4-4a87-8653-2091bf111eb1",
+      "name": "Tokens",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8e451e3-79fb-4e2a-9263-0485d96b5612",
+          "name": "Get rETH Token State",
+          "request": {
+            "name": "Get rETH Token State",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                "reth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ef82f09-e409-4e5c-be79-0691aba01288",
+              "name": "rETH token supply and exchange rate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "reth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contractAddress\": \"0x64f114E9CD8fdfd6Fbd03605ef4Ef1dd6cbbDEcA\",\n  \"symbol\": \"string\",\n  \"decimals\": 5286,\n  \"totalSupply\": \"string\",\n  \"exchangeRate\": 7078.6643157047165\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0abbcfe-a6be-47e7-bade-fb9c91c05a8a",
+          "name": "Get RPL Token State",
+          "request": {
+            "name": "Get RPL Token State",
+            "description": {},
+            "url": {
+              "path": [
+                "tokens",
+                "rpl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d1d2c8e-8d80-4a99-9a63-bfbb19a5c17d",
+              "name": "RPL token supply and inflation state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens",
+                    "rpl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contractAddress\": \"0x64f114E9CD8fdfd6Fbd03605ef4Ef1dd6cbbDEcA\",\n  \"symbol\": \"string\",\n  \"decimals\": 5286,\n  \"totalSupply\": \"string\",\n  \"exchangeRate\": 7078.6643157047165\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9ab6c140-bac8-4b26-8ea6-54dfca9eb632",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Tokens API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

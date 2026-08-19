@@ -1,0 +1,621 @@
+{
+  "item": [
+    {
+      "id": "956ca46b-cf83-46fc-8e7f-8a9629958330",
+      "name": "Minipool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9de68bf0-2276-4655-a9b2-ec3007409366",
+          "name": "List Minipools",
+          "request": {
+            "name": "List Minipools",
+            "description": {},
+            "url": {
+              "path": [
+                "minipools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13457cd1-26cd-492d-9714-4edb552a86a5",
+              "name": "Page of minipools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 7333,\n  \"items\": [\n    {\n      \"address\": \"0xE9bF8D132CD0D3168A2f99d19A86dBeBcB46fCEC\",\n      \"nodeAddress\": \"0xaAB472A2Ba19708d40337F4ADc067AEFBc1Ed8A5\",\n      \"validatorPubkey\": \"0xAa7b54E65c6AFf1B3b2615bfA26F24C31dFa2eEFbC05Ee3474aED5bb1Dfcc71431fFf56845f8Ff9bF4FA6DBe213b530C\",\n      \"status\": \"string\",\n      \"depositType\": \"string\",\n      \"nodeDepositBalance\": \"string\",\n      \"userDepositBalance\": \"string\",\n      \"nodeFee\": 2331.9481789194942,\n      \"delegateAddress\": \"0xc276CcDCEd8804a2C0F21B835bb63709C7B4e5e1\",\n      \"useLatestDelegate\": true,\n      \"finalised\": false\n    },\n    {\n      \"address\": \"0xEf3d9AbaB7981fD19dA5a6b2Ddab0b1f661F97ce\",\n      \"nodeAddress\": \"0xcDCbCBD86e76C0ed64F8dd8A2d5fecBEFb14abD4\",\n      \"validatorPubkey\": \"0x9bD3f82D8Fa2e2EF450B93A927dA39f087CFDcAeC6f84b28B95cDDFAA6e7D245A96c1FaF82A5a1e2D0D033073be22FCa\",\n      \"status\": \"string\",\n      \"depositType\": \"string\",\n      \"nodeDepositBalance\": \"string\",\n      \"userDepositBalance\": \"string\",\n      \"nodeFee\": 6792.502385650509,\n      \"delegateAddress\": \"0x2Eafd06E9aFCD0c2f3eB0Ba0f1c648EadbA84Fde\",\n      \"useLatestDelegate\": true,\n      \"finalised\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aa81238-c4f7-48a8-8e93-ed60d55b123d",
+          "name": "Get Minipool Details",
+          "request": {
+            "name": "Get Minipool Details",
+            "description": {},
+            "url": {
+              "path": [
+                "minipools",
+                ":address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27350a95-8675-458a-9704-89ae29306276",
+              "name": "Minipool details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipools",
+                    ":address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"<string>\",\n  \"nodeAddress\": \"<string>\",\n  \"validatorPubkey\": \"0xEb9aE840dadBaBB9CBfDFB71Ef53BAFBEA6EfF1f1De301ab2C3FBe4bad5dCb83eaCc98C506267761eDAe3Fd3CEcead35\",\n  \"status\": \"string\",\n  \"depositType\": \"string\",\n  \"nodeDepositBalance\": \"string\",\n  \"userDepositBalance\": \"string\",\n  \"nodeFee\": 8733.338363354105,\n  \"delegateAddress\": \"<string>\",\n  \"useLatestDelegate\": true,\n  \"finalised\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0080441-2777-4fa5-95d3-d7a6825a66ea",
+          "name": "List Node Minipools",
+          "request": {
+            "name": "List Node Minipools",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "071f02d5-a44e-48c1-b643-a0ce54fe8d8d",
+              "name": "List of minipools belonging to the node",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"validatorPubkey\": \"0x9ee7f031beC2B13Beacd532A7Cb3Aa5BF8a8Ae6f50CeF4a9D6F71eba65Eba5FD7A0BB65678EBf50faB0fCBEdc79b3Bee\",\n    \"status\": \"Prelaunch\",\n    \"depositType\": \"None\",\n    \"nodeDepositBalance\": \"32000000000000000000\",\n    \"userDepositBalance\": \"32000000000000000000\",\n    \"nodeFee\": 9678.185312619127,\n    \"createdTime\": \"1963-01-22T09:37:03.407Z\",\n    \"useLatestDelegate\": true\n  },\n  {\n    \"address\": \"0x0000000000000000000000000000000000000000\",\n    \"validatorPubkey\": \"0x6c53378eC95255Ee3dAb28D52d8e7E46CDd2EdcC670CeF4eFE0F2DD19aC8DFd6a4197EFCfb8e6bd2373BbcaFeD6E9a0b\",\n    \"status\": \"Staking\",\n    \"depositType\": \"Full\",\n    \"nodeDepositBalance\": \"32000000000000000000\",\n    \"userDepositBalance\": \"32000000000000000000\",\n    \"nodeFee\": 9721.321972003963,\n    \"createdTime\": \"1964-07-09T11:36:51.713Z\",\n    \"useLatestDelegate\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b8001a9-9bfc-432f-ad54-07d31ac720f2",
+          "name": "Stake Minipool After Scrub Check",
+          "request": {
+            "name": "Stake Minipool After Scrub Check",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "stake"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b24914de-3dc4-4fae-ae5d-b3c09f7bffea",
+              "name": "Stake submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "stake"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"txHash\": \"0x4d0ADdD09103f0b8eaAf4DfFCf08eBD51aAef55522F114D758c3EBCceC9beE6d\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6613,\n    \"safeGasLimit\": 3413\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7096de3-e55b-45c9-821e-d3394d5991ce",
+          "name": "Exit Minipool From Beacon Chain",
+          "request": {
+            "name": "Exit Minipool From Beacon Chain",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "exit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eaa1b834-7a47-4428-abc4-dbb500414e47",
+              "name": "Exit signed and broadcast",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "exit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"txHash\": \"0x4d0ADdD09103f0b8eaAf4DfFCf08eBD51aAef55522F114D758c3EBCceC9beE6d\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6613,\n    \"safeGasLimit\": 3413\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48ce2ef9-65ba-480d-bd1f-193cc801f642",
+          "name": "Close Minipool",
+          "request": {
+            "name": "Close Minipool",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9835759b-3b09-4375-95a7-b31599ac02bd",
+              "name": "Close submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"txHash\": \"0x4d0ADdD09103f0b8eaAf4DfFCf08eBD51aAef55522F114D758c3EBCceC9beE6d\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6613,\n    \"safeGasLimit\": 3413\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81026c6d-c268-43be-9f1f-d6fcb05998b7",
+          "name": "Distribute Minipool Balance",
+          "request": {
+            "name": "Distribute Minipool Balance",
+            "description": {},
+            "url": {
+              "path": [
+                "minipool",
+                ":address",
+                "distribute-balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "address",
+                  "description": "(Required) The Ethereum address of the minipool contract"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb5f21d4-a794-452d-ad69-172efee48dbe",
+              "name": "Distribute submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "minipool",
+                    ":address",
+                    "distribute-balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "address",
+                      "description": "(Required) The Ethereum address of the minipool contract"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"txHash\": \"0x4d0ADdD09103f0b8eaAf4DfFCf08eBD51aAef55522F114D758c3EBCceC9beE6d\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6613,\n    \"safeGasLimit\": 3413\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5359069c-df42-4549-987e-fda85046a41a",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Minipool API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

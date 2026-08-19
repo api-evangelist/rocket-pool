@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Tokens API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get rETH Token State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/tokens/reth"
+          },
+          "docs": "Get rETH Token State"
+        },
+        {
+          "info": {
+            "name": "Get RPL Token State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/tokens/rpl"
+          },
+          "docs": "Get RPL Token State"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

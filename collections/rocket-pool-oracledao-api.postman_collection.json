@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "45166956-e8f4-4aa8-aac5-15711fcabf63",
+      "name": "OracleDAO",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92fb9cf2-58bf-4889-ac58-23c7ab82f796",
+          "name": "List Oracle DAO Members",
+          "request": {
+            "name": "List Oracle DAO Members",
+            "description": {},
+            "url": {
+              "path": [
+                "odao",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59fba1ce-d321-441a-8631-1f2a5575aa81",
+              "name": "Oracle DAO members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "odao",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"address\": \"0xfdb160DB88dF5cC065e5ddB73dD7aEdedffba1Ce\",\n    \"id\": \"string\",\n    \"url\": \"https://iTiurGkigupdjjYOEAqinXoJMDva.eschRFBjkOCwas,Ri8tka8DuDxWSOGw-vIMVYDlB\",\n    \"joinedTime\": \"2010-12-19T09:59:50.836Z\"\n  },\n  {\n    \"address\": \"0xcbedFDEEb0D955F42A1680C3B3D6CfB30cCBf8AE\",\n    \"id\": \"string\",\n    \"url\": \"http://E.zlkA+FTrKmMNami-4XdnD6EVgi6413qq3Ym\",\n    \"joinedTime\": \"2025-04-22T20:30:09.415Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70141489-dca1-40f6-9062-1ad2596693c5",
+          "name": "Get Oracle DAO Status",
+          "request": {
+            "name": "Get Oracle DAO Status",
+            "description": {},
+            "url": {
+              "path": [
+                "odao",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0ff46c07-ef00-40d9-b785-abd545f91340",
+              "name": "Oracle DAO status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "odao",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"memberCount\": 7071,\n  \"proposalCount\": 8786,\n  \"isMember\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bf34ebc6-d0d9-44b8-850a-37a4cc0cf9da",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction OracleDAO API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

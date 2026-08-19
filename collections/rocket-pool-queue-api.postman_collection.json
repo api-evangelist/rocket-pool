@@ -1,0 +1,170 @@
+{
+  "item": [
+    {
+      "id": "d4a48bc1-74b3-4889-b9ec-5c5f1b4d5e44",
+      "name": "Queue",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d64d8d03-0dcf-4486-97f8-99f8412ff6f5",
+          "name": "Get Deposit And Minipool Queue Status",
+          "request": {
+            "name": "Get Deposit And Minipool Queue Status",
+            "description": {},
+            "url": {
+              "path": [
+                "queue",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c78e4d19-99cd-4a09-b0ce-1da4fda4fd1b",
+              "name": "Queue status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queue",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositPoolBalance\": \"32000000000000000000\",\n  \"depositPoolExcess\": \"32000000000000000000\",\n  \"minipoolQueueLength\": 4956,\n  \"minipoolQueueCapacity\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72b158cf-42d5-4572-94f4-7dcfe40186ae",
+          "name": "Process Deposit Pool",
+          "request": {
+            "name": "Process Deposit Pool",
+            "description": {},
+            "url": {
+              "path": [
+                "queue",
+                "process"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca244dc6-5f59-45bb-80fd-d635b04c7d70",
+              "name": "Process submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queue",
+                    "process"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"txHash\": \"0xBfA27DAabFDe7B9fEaEfDA3b7d3FAC4bdA88Eb62eD33c5F48e8Ba983a87Ef7AE\",\n  \"gasInfo\": {\n    \"estGasLimit\": 6683,\n    \"safeGasLimit\": 3939\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8d69dfbd-a4c4-4824-ae35-a178ef3b58e6",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Queue API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

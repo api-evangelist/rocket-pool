@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Megapool API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Megapool",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Megapool Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/megapool/status"
+          },
+          "docs": "Get Megapool Status"
+        },
+        {
+          "info": {
+            "name": "Create Megapool Validators",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/megapool/deposit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Megapool Validators"
+        },
+        {
+          "info": {
+            "name": "Exit Megapool Queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://protocol.rocketpool.example/v1/megapool/exit-queue"
+          },
+          "docs": "Exit Megapool Queue"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,347 @@
+{
+  "item": [
+    {
+      "id": "e6a551fa-9739-436f-a921-512fe7f59a7f",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfc1b4e4-65d6-4a60-a6fa-f385acd46e99",
+          "name": "List Rewards Intervals",
+          "request": {
+            "name": "List Rewards Intervals",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "intervals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0b527f5-b1a6-40e9-8054-34ce3c620d1e",
+              "name": "Past and current rewards intervals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "intervals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"index\": 7214,\n    \"merkleRoot\": \"string\",\n    \"startTime\": \"2016-01-18T20:29:24.279Z\",\n    \"endTime\": \"1999-12-22T11:31:05.431Z\",\n    \"nodeRpl\": \"string\",\n    \"odaoRpl\": \"string\",\n    \"pdaoRpl\": \"string\",\n    \"smoothingPoolEth\": \"string\"\n  },\n  {\n    \"index\": 6910,\n    \"merkleRoot\": \"string\",\n    \"startTime\": \"1986-02-21T16:02:29.593Z\",\n    \"endTime\": \"1969-02-01T01:12:46.263Z\",\n    \"nodeRpl\": \"string\",\n    \"odaoRpl\": \"string\",\n    \"pdaoRpl\": \"string\",\n    \"smoothingPoolEth\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0397a3ee-96ba-44a7-9e51-2f14b75aa859",
+          "name": "Get Rewards Interval Detail",
+          "request": {
+            "name": "Get Rewards Interval Detail",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "intervals",
+                ":index"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "index",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fac33dbb-7e5b-4b8d-9817-aedec4adc9d4",
+              "name": "Rewards interval Merkle root and totals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "intervals",
+                    ":index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "index",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 9752,\n  \"merkleRoot\": \"string\",\n  \"startTime\": \"1954-03-01T06:36:39.760Z\",\n  \"endTime\": \"1973-07-13T22:58:16.380Z\",\n  \"nodeRpl\": \"string\",\n  \"odaoRpl\": \"string\",\n  \"pdaoRpl\": \"string\",\n  \"smoothingPoolEth\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6b36a10-58a5-42b0-aded-7a430ba86e62",
+          "name": "View Available Rewards And Node Credits",
+          "request": {
+            "name": "View Available Rewards And Node Credits",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92c1b8ae-143d-4294-9b0d-facda1c11203",
+              "name": "Rewards status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentInterval\": 2916,\n  \"intervalsToClaim\": [\n    2928,\n    5229\n  ],\n  \"unclaimedRpl\": \"32000000000000000000\",\n  \"unclaimedEth\": \"32000000000000000000\",\n  \"unclaimedSmoothingPool\": \"32000000000000000000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8bbc122-5b8d-47e1-a37d-9093cb8a8093",
+          "name": "Claim All Rewards And Node Credits",
+          "request": {
+            "name": "Claim All Rewards And Node Credits",
+            "description": {},
+            "url": {
+              "path": [
+                "rewards",
+                "claim-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"intervals\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be1e600a-1767-499c-8b64-2d43f72b8fa3",
+              "name": "Claim submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    "claim-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"intervals\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"stakeAmount\": \"32000000000000000000\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"txHash\": \"0xd6B22DaaCEAdEeb7d571BefB92a3ba993c5b66efD3DBAf9cAeca901BbFA17E4c\",\n  \"gasInfo\": {\n    \"estGasLimit\": 9234,\n    \"safeGasLimit\": 2568\n  },\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://protocol.rocketpool.example/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6c915026-9bb3-413e-9e66-184bedcb9d36",
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction Rewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.\n\nContact Support:\n Name: Rocket Pool",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rocket Pool Protocol API (rocketpool-go) Auction OracleDAO API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OracleDAO",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Oracle DAO Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/odao/members"
+          },
+          "docs": "List Oracle DAO Members"
+        },
+        {
+          "info": {
+            "name": "Get Oracle DAO Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://protocol.rocketpool.example/v1/odao/status"
+          },
+          "docs": "Get Oracle DAO Status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
