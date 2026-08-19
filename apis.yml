@@ -47,7 +47,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/rocket-pool/refs/heads/main/apis.yml
 created: '2026-05-24'
 modified: '2026-05-24'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: rocket-pool:rocketpool-js-protocol-api
   name: Rocket Pool Protocol API (rocketpool-js)
