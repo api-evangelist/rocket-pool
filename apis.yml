@@ -37,6 +37,22 @@ tags:
   - Smart Contracts
   - Node Operators
   - Validator
+  - Reth
+  - RPL
+  - Minipool
+  - Decentralized Finance
+  - Decentralized Governance
+  - DAO
+  - Web3
+tags_raw:
+  - Blockchain
+  - Ethereum
+  - Liquid Staking
+  - Proof of Stake
+  - DeFi
+  - Smart Contracts
+  - Node Operators
+  - Validator
   - rETH
   - RPL
   - Minipool
@@ -58,6 +74,13 @@ apis:
     user deposits.
   humanURL: https://github.com/rocket-pool/rocketpool-js
   tags:
+  - Smart Contracts
+  - TypeScript
+  - JavaScript
+  - Library
+  - Reth
+  - dApp
+  tags_raw:
   - Smart Contracts
   - TypeScript
   - JavaScript
@@ -321,6 +344,8 @@ apis:
   description: The Wallet API from Rocket Pool — 4 operation(s) for wallet.
   humanURL: https://github.com/rocket-pool/smartnode
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
