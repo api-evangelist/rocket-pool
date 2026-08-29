@@ -14,6 +14,18 @@ description: >-
   mainnet. Rocket Pool has no centralized REST API, no hosted developer platform, no API keys, and no pricing — all
   participation is on-chain via Ethereum JSON-RPC and the protocol's deployed contracts.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
@@ -361,6 +373,8 @@ apis:
   - type: Documentation
     url: https://docs.rocketpool.net/overview/contracts-integrations
 common:
+  - type: IssueTracker
+    url: https://github.com/rocket-pool/rocketpool-js/issues
   - type: AgenticAccess
     url: agentic-access/rocket-pool-agentic-access.yml
   - type: DomainSecurity
