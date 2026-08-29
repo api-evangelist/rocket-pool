@@ -1,40 +1,54 @@
 {
   "provider": "rocket-pool",
   "sources": [
-    "rocket-pool-auction-api-openapi.yml",
-    "rocket-pool-deposit-api-openapi.yml",
-    "rocket-pool-megapool-api-openapi.yml",
-    "rocket-pool-minipool-api-openapi.yml",
-    "rocket-pool-network-api-openapi.yml",
-    "rocket-pool-node-api-openapi.yml",
-    "rocket-pool-oracledao-api-openapi.yml",
-    "rocket-pool-protocoldao-api-openapi.yml",
-    "rocket-pool-queue-api-openapi.yml",
-    "rocket-pool-rewards-api-openapi.yml",
-    "rocket-pool-service-api-openapi.yml",
-    "rocket-pool-settings-api-openapi.yml",
-    "rocket-pool-tokens-api-openapi.yml",
-    "rocket-pool-wallet-api-openapi.yml"
+    "_original/rocket-pool-protocol-openapi.yml",
+    "_original/rocket-pool-smart-node-openapi.yml"
   ],
   "outputs": [
     "rocket-pool-auction-api-openapi.yml",
     "rocket-pool-deposit-api-openapi.yml",
-    "rocket-pool-megapool-api-openapi.yml",
     "rocket-pool-minipool-api-openapi.yml",
     "rocket-pool-network-api-openapi.yml",
     "rocket-pool-node-api-openapi.yml",
     "rocket-pool-oracledao-api-openapi.yml",
     "rocket-pool-protocoldao-api-openapi.yml",
-    "rocket-pool-queue-api-openapi.yml",
     "rocket-pool-rewards-api-openapi.yml",
-    "rocket-pool-service-api-openapi.yml",
     "rocket-pool-settings-api-openapi.yml",
     "rocket-pool-tokens-api-openapi.yml",
+    "rocket-pool-megapool-api-openapi.yml",
+    "rocket-pool-queue-api-openapi.yml",
+    "rocket-pool-service-api-openapi.yml",
     "rocket-pool-wallet-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rocket-pool-protocol-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "rocket-pool-smart-node-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "tag 'Auction' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'Minipool' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'Network' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'Node' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'OracleDAO' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'ProtocolDAO' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "tag 'Rewards' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "rocket-pool-auction-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-deposit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-megapool-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-minipool-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-network-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-node-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-oracledao-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-protocoldao-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-queue-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-service-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rocket-pool-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

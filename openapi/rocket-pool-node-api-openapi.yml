@@ -1,17 +1,13 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Rocket Pool Protocol API (rocketpool-go) Auction Node API
-  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
-  version: 1.0.0
-  license:
-    name: GPL-3.0
-    url: https://github.com/rocket-pool/rocketpool-go/blob/master/LICENSE
-  contact:
-    name: Rocket Pool
-    url: https://github.com/rocket-pool/rocketpool-go
+  title: Rocket Pool Node API
+  version: '1.0'
+  description: 'Operations tagged Node across 2 of this provider''s published API definitions: rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://protocol.rocketpool.example/v1
   description: Logical base path — actual access is via Ethereum smart contracts
+- url: http://localhost:8080/api
+  description: Local Smart Node daemon (loopback)
 tags:
 - name: Node
 paths:
@@ -44,6 +40,9 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/NodeDetails'
+    servers:
+    - url: https://protocol.rocketpool.example/v1
+      description: Logical base path — actual access is via Ethereum smart contracts
   /nodes/{address}:
     get:
       tags:
@@ -59,6 +58,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NodeDetails'
+    servers:
+    - url: https://protocol.rocketpool.example/v1
+      description: Logical base path — actual access is via Ethereum smart contracts
   /nodes/{address}/minipools:
     get:
       tags:
@@ -76,6 +78,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/MinipoolDetails'
+    servers:
+    - url: https://protocol.rocketpool.example/v1
+      description: Logical base path — actual access is via Ethereum smart contracts
   /node/status:
     get:
       tags:
@@ -89,6 +94,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NodeStatus'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/sync:
     get:
       tags:
@@ -102,6 +110,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SyncStatus'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/register:
     post:
       tags:
@@ -121,6 +132,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/rewards:
     get:
       tags:
@@ -134,6 +148,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NodeRewards'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/stake-rpl:
     post:
       tags:
@@ -153,6 +170,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/withdraw-rpl:
     post:
       tags:
@@ -172,6 +192,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/claim-rewards:
     post:
       tags:
@@ -191,6 +214,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/join-smoothing-pool:
     post:
       tags:
@@ -204,6 +230,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
   /node/leave-smoothing-pool:
     post:
       tags:
@@ -217,8 +246,124 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+    servers:
+    - url: http://localhost:8080/api
+      description: Local Smart Node daemon (loopback)
 components:
   schemas:
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+    EthAmount:
+      type: string
+      description: Amount in wei
+    MinipoolDetails:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        nodeAddress:
+          $ref: '#/components/schemas/Address'
+        validatorPubkey:
+          $ref: '#/components/schemas/PublicKey'
+        status:
+          type: string
+        depositType:
+          type: string
+        nodeDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        userDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        nodeFee:
+          type: number
+          format: float
+        delegateAddress:
+          $ref: '#/components/schemas/Address'
+        useLatestDelegate:
+          type: boolean
+        finalised:
+          type: boolean
+    PublicKey:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{96}$
+    NodeDetails:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        registrationTime:
+          type: string
+          format: date-time
+        timezone:
+          type: string
+        withdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        rplWithdrawalAddress:
+          $ref: '#/components/schemas/Address'
+        rplStake:
+          $ref: '#/components/schemas/EthAmount'
+        effectiveRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        minimumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        maximumRplStake:
+          $ref: '#/components/schemas/EthAmount'
+        ethMatched:
+          $ref: '#/components/schemas/EthAmount'
+        ethMatchedLimit:
+          $ref: '#/components/schemas/EthAmount'
+        minipoolCount:
+          type: integer
+        smoothingPoolRegistered:
+          type: boolean
+    NodeRegisterRequest:
+      type: object
+      required:
+      - timezone
+      properties:
+        timezone:
+          type: string
+          example: America/Denver
+    Address_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    ClaimRewardsRequest:
+      type: object
+      required:
+      - indices
+      properties:
+        indices:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount_2'
+    StakeRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
+    SyncStatus:
+      type: object
+      properties:
+        eth1:
+          $ref: '#/components/schemas/ClientSync'
+        eth2:
+          $ref: '#/components/schemas/ClientSync'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    WithdrawRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
     NodeStatus:
       type: object
       properties:
@@ -263,96 +408,6 @@ components:
         smoothingPoolRegistrationChanged:
           type: string
           format: date-time
-    NodeRegisterRequest:
-      type: object
-      required:
-      - timezone
-      properties:
-        timezone:
-          type: string
-          example: America/Denver
-    SyncStatus:
-      type: object
-      properties:
-        eth1:
-          $ref: '#/components/schemas/ClientSync'
-        eth2:
-          $ref: '#/components/schemas/ClientSync'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-    NodeDetails:
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        registrationTime:
-          type: string
-          format: date-time
-        timezone:
-          type: string
-        withdrawalAddress:
-          $ref: '#/components/schemas/Address'
-        rplWithdrawalAddress:
-          $ref: '#/components/schemas/Address'
-        rplStake:
-          $ref: '#/components/schemas/EthAmount'
-        effectiveRplStake:
-          $ref: '#/components/schemas/EthAmount'
-        minimumRplStake:
-          $ref: '#/components/schemas/EthAmount'
-        maximumRplStake:
-          $ref: '#/components/schemas/EthAmount'
-        ethMatched:
-          $ref: '#/components/schemas/EthAmount'
-        ethMatchedLimit:
-          $ref: '#/components/schemas/EthAmount'
-        minipoolCount:
-          type: integer
-        smoothingPoolRegistered:
-          type: boolean
-    ClientSync:
-      type: object
-      properties:
-        synced:
-          type: boolean
-        progress:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-    WithdrawRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
-    Address_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    StakeRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-    ClaimRewardsRequest:
-      type: object
-      required:
-      - indices
-      properties:
-        indices:
-          type: array
-          items:
-            type: integer
-        stakeAmount:
-          $ref: '#/components/schemas/EthAmount_2'
     TransactionResponse:
       type: object
       properties:
@@ -372,39 +427,19 @@ components:
               type: integer
         error:
           type: string
-    EthAmount_2:
+    TransactionHash:
       type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    EthAmount:
-      type: string
-      description: Amount in wei
-    MinipoolDetails:
+      pattern: ^0x[a-fA-F0-9]{64}$
+    ClientSync:
       type: object
       properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        nodeAddress:
-          $ref: '#/components/schemas/Address'
-        validatorPubkey:
-          $ref: '#/components/schemas/PublicKey'
-        status:
-          type: string
-        depositType:
-          type: string
-        nodeDepositBalance:
-          $ref: '#/components/schemas/EthAmount'
-        userDepositBalance:
-          $ref: '#/components/schemas/EthAmount'
-        nodeFee:
+        synced:
+          type: boolean
+        progress:
           type: number
           format: float
-        delegateAddress:
-          $ref: '#/components/schemas/Address'
-        useLatestDelegate:
-          type: boolean
-        finalised:
-          type: boolean
+          minimum: 0
+          maximum: 1
     NodeRewards:
       type: object
       properties:
@@ -418,9 +453,6 @@ components:
           format: date-time
         rewardsInterval:
           type: integer
-    PublicKey:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{96}$
   parameters:
     Address:
       name: address
@@ -428,3 +460,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Address'
+x-refined-from:
+- rocket-pool-protocol-openapi.yml
+- rocket-pool-smart-node-openapi.yml
