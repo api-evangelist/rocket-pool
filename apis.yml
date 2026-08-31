@@ -49,7 +49,7 @@ tags:
   - Smart Contracts
   - Node Operators
   - Validator
-  - Reth
+  - rETH
   - RPL
   - Minipool
   - Decentralized Finance
@@ -90,7 +90,7 @@ apis:
   - TypeScript
   - JavaScript
   - Library
-  - Reth
+  - rETH
   - dApp
   tags_raw:
   - Smart Contracts
