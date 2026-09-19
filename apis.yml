@@ -109,6 +109,8 @@ apis:
   description: The Auction API from Rocket Pool — 3 operation(s) for auction.
   humanURL: https://github.com/rocket-pool/smartnode
   tags:
+  - Auctions
+  tags_raw:
   - Auction
   properties:
   - type: OpenAPI
@@ -185,6 +187,8 @@ apis:
   description: The Network API from Rocket Pool — 7 operation(s) for network.
   humanURL: https://github.com/rocket-pool/smartnode
   tags:
+  - Networks
+  tags_raw:
   - Network
   properties:
   - type: OpenAPI
@@ -261,6 +265,8 @@ apis:
   description: The Queue API from Rocket Pool — 2 operation(s) for queue.
   humanURL: https://github.com/rocket-pool/smartnode
   tags:
+  - Queues
+  tags_raw:
   - Queue
   properties:
   - type: OpenAPI
@@ -299,6 +305,8 @@ apis:
   description: The Service API from Rocket Pool — 2 operation(s) for service.
   humanURL: https://github.com/rocket-pool/smartnode
   tags:
+  - Services
+  tags_raw:
   - Service
   properties:
   - type: OpenAPI
