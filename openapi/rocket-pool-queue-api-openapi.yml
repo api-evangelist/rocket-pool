@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Rocket Pool Smart Node Daemon Queue API
-  description: 'Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack. This API is the contract used by the rocketpool CLI to drive node operator workflows: wallet management, minipool and megapool lifecycle, RPL staking, rewards claims, smoothing pool participation, and oracle DAO / protocol DAO actions. It is intended to be reached only over a local Unix socket or loopback HTTP endpoint inside the Smart Node Docker network — never exposed to the public internet. Surface derived from the rocketpool CLI command tree documented in the rocket-pool/smartnode README.'
+  description: Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack.
   version: 1.16.0
   license:
     name: GPL-3.0
@@ -43,13 +43,6 @@ paths:
                 $ref: '#/components/schemas/TransactionResponse'
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
     TransactionResponse:
       type: object
       properties:
@@ -80,3 +73,10 @@ components:
           type: integer
         minipoolQueueCapacity:
           $ref: '#/components/schemas/EthAmount'
+    EthAmount:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$

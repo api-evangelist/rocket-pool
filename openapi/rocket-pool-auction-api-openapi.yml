@@ -69,9 +69,6 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount in wei
     AuctionLot:
       type: object
       properties:
@@ -85,10 +82,38 @@ components:
           $ref: '#/components/schemas/EthAmount'
         totalRplAmount:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount_2:
+    EthAmount:
       type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
+      description: Amount in wei
+    TransactionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
+    AuctionBidRequest:
+      type: object
+      required:
+      - lotIndex
+      - amount
+      properties:
+        lotIndex:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
     AuctionLot_2:
       type: object
       properties:
@@ -110,38 +135,6 @@ components:
           $ref: '#/components/schemas/EthAmount_2'
         remainingRplAmount:
           $ref: '#/components/schemas/EthAmount_2'
-    AuctionBidRequest:
-      type: object
-      required:
-      - lotIndex
-      - amount
-      properties:
-        lotIndex:
-          type: integer
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
-    TransactionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        txHash:
-          $ref: '#/components/schemas/TransactionHash'
-        gasInfo:
-          type: object
-          properties:
-            estGasLimit:
-              type: integer
-            safeGasLimit:
-              type: integer
-        error:
-          type: string
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
     AuctionStatus:
       type: object
       properties:
@@ -151,6 +144,13 @@ components:
           $ref: '#/components/schemas/EthAmount_2'
         canCreateLot:
           type: boolean
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

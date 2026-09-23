@@ -127,24 +127,14 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount in wei
-    NetworkFees:
+    NetworkPrices:
       type: object
       properties:
-        nodeFee:
+        block:
+          type: integer
+        rplPrice:
           type: number
-          format: float
-        minNodeFee:
-          type: number
-          format: float
-        maxNodeFee:
-          type: number
-          format: float
-        targetNodeFee:
-          type: number
-          format: float
+          format: double
     NetworkBalances:
       type: object
       properties:
@@ -156,29 +146,15 @@ components:
           $ref: '#/components/schemas/EthAmount'
         rethSupply:
           $ref: '#/components/schemas/EthAmount'
-    NetworkPrices:
-      type: object
-      properties:
-        block:
-          type: integer
-        rplPrice:
-          type: number
-          format: double
-    Address:
+    EthAmount:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    NodeFee:
+      description: Amount in wei
+    NetworkFees:
       type: object
       properties:
         nodeFee:
           type: number
           format: float
-          example: 0.14
         minNodeFee:
           type: number
           format: float
@@ -213,17 +189,6 @@ components:
         createdTime:
           type: string
           format: date-time
-    RplPrice:
-      type: object
-      properties:
-        priceEth:
-          type: number
-          format: double
-        block:
-          type: integer
-        blockTime:
-          type: string
-          format: date-time
     NetworkStats:
       type: object
       properties:
@@ -245,6 +210,41 @@ components:
           type: integer
         totalMegapoolValidators:
           type: integer
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    NodeFee:
+      type: object
+      properties:
+        nodeFee:
+          type: number
+          format: float
+          example: 0.14
+        minNodeFee:
+          type: number
+          format: float
+        maxNodeFee:
+          type: number
+          format: float
+        targetNodeFee:
+          type: number
+          format: float
+    RplPrice:
+      type: object
+      properties:
+        priceEth:
+          type: number
+          format: double
+        block:
+          type: integer
+        blockTime:
+          type: string
+          format: date-time
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

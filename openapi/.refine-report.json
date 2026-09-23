@@ -33,7 +33,8 @@
     "tag 'Node' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
     "tag 'OracleDAO' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
     "tag 'ProtocolDAO' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
-    "tag 'Rewards' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied"
+    "tag 'Rewards' spans 2 source specs (rocket-pool-protocol-openapi.yml, rocket-pool-smart-node-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "rocket-pool-auction-api-openapi.yml: previously refined output, superseded by openapi/_original/",

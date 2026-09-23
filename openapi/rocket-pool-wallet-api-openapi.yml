@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Rocket Pool Smart Node Daemon Wallet API
-  description: 'Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack. This API is the contract used by the rocketpool CLI to drive node operator workflows: wallet management, minipool and megapool lifecycle, RPL staking, rewards claims, smoothing pool participation, and oracle DAO / protocol DAO actions. It is intended to be reached only over a local Unix socket or loopback HTTP endpoint inside the Smart Node Docker network — never exposed to the public internet. Surface derived from the rocketpool CLI command tree documented in the rocket-pool/smartnode README.'
+  description: Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack.
   version: 1.16.0
   license:
     name: GPL-3.0
@@ -81,6 +81,20 @@ paths:
                 $ref: '#/components/schemas/WalletExport'
 components:
   schemas:
+    WalletExport:
+      type: object
+      properties:
+        password:
+          type: string
+        wallet:
+          type: string
+          description: Encrypted JSON keystore
+        accountPrivateKey:
+          type: string
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
     WalletRecoverRequest:
       type: object
       required:
@@ -97,31 +111,6 @@ components:
           type: string
         walletIndex:
           type: integer
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    WalletStatus:
-      type: object
-      properties:
-        accountAddress:
-          $ref: '#/components/schemas/Address'
-        walletInitialized:
-          type: boolean
-        passwordSet:
-          type: boolean
-        ensName:
-          type: string
-    WalletExport:
-      type: object
-      properties:
-        password:
-          type: string
-        wallet:
-          type: string
-          description: Encrypted JSON keystore
-        accountPrivateKey:
-          type: string
     WalletInitRequest:
       type: object
       required:
@@ -135,3 +124,14 @@ components:
           example: m/44'/60'/0'/0/0
         walletIndex:
           type: integer
+    WalletStatus:
+      type: object
+      properties:
+        accountAddress:
+          $ref: '#/components/schemas/Address'
+        walletInitialized:
+          type: boolean
+        passwordSet:
+          type: boolean
+        ensName:
+          type: string

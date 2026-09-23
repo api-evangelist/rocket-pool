@@ -157,9 +157,6 @@ components:
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
-    EthAmount:
-      type: string
-      description: Amount in wei
     MinipoolDetails:
       type: object
       properties:
@@ -186,17 +183,12 @@ components:
           type: boolean
         finalised:
           type: boolean
+    EthAmount:
+      type: string
+      description: Amount in wei
     PublicKey:
       type: string
       pattern: ^0x[a-fA-F0-9]{96}$
-    Address_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
     TransactionResponse:
       type: object
       properties:
@@ -216,13 +208,6 @@ components:
               type: integer
         error:
           type: string
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-    PublicKey_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{96}$
-      description: BLS12-381 validator public key
     Minipool:
       type: object
       properties:
@@ -259,6 +244,21 @@ components:
           format: date-time
         useLatestDelegate:
           type: boolean
+    Address_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    PublicKey_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{96}$
+      description: BLS12-381 validator public key
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
   parameters:
     Address:
       name: address

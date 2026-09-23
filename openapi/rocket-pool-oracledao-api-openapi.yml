@@ -63,10 +63,10 @@ components:
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
-    EthAmount:
+    Address_2:
       type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
     OracleDaoMember_2:
       type: object
       properties:
@@ -85,10 +85,10 @@ components:
           format: date-time
         rplBondAmount:
           $ref: '#/components/schemas/EthAmount'
-    Address_2:
+    EthAmount:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
     OracleDaoStatus:
       type: object
       properties:

@@ -254,38 +254,6 @@ components:
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
-    EthAmount:
-      type: string
-      description: Amount in wei
-    MinipoolDetails:
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        nodeAddress:
-          $ref: '#/components/schemas/Address'
-        validatorPubkey:
-          $ref: '#/components/schemas/PublicKey'
-        status:
-          type: string
-        depositType:
-          type: string
-        nodeDepositBalance:
-          $ref: '#/components/schemas/EthAmount'
-        userDepositBalance:
-          $ref: '#/components/schemas/EthAmount'
-        nodeFee:
-          type: number
-          format: float
-        delegateAddress:
-          $ref: '#/components/schemas/Address'
-        useLatestDelegate:
-          type: boolean
-        finalised:
-          type: boolean
-    PublicKey:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{96}$
     NodeDetails:
       type: object
       properties:
@@ -316,6 +284,38 @@ components:
           type: integer
         smoothingPoolRegistered:
           type: boolean
+    MinipoolDetails:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        nodeAddress:
+          $ref: '#/components/schemas/Address'
+        validatorPubkey:
+          $ref: '#/components/schemas/PublicKey'
+        status:
+          type: string
+        depositType:
+          type: string
+        nodeDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        userDepositBalance:
+          $ref: '#/components/schemas/EthAmount'
+        nodeFee:
+          type: number
+          format: float
+        delegateAddress:
+          $ref: '#/components/schemas/Address'
+        useLatestDelegate:
+          type: boolean
+        finalised:
+          type: boolean
+    EthAmount:
+      type: string
+      description: Amount in wei
+    PublicKey:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{96}$
     NodeRegisterRequest:
       type: object
       required:
@@ -324,46 +324,25 @@ components:
         timezone:
           type: string
           example: America/Denver
-    Address_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    ClaimRewardsRequest:
-      type: object
-      required:
-      - indices
-      properties:
-        indices:
-          type: array
-          items:
-            type: integer
-        stakeAmount:
-          $ref: '#/components/schemas/EthAmount_2'
-    StakeRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
-    SyncStatus:
+    TransactionResponse:
       type: object
       properties:
-        eth1:
-          $ref: '#/components/schemas/ClientSync'
-        eth2:
-          $ref: '#/components/schemas/ClientSync'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    WithdrawRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
     NodeStatus:
       type: object
       properties:
@@ -408,28 +387,17 @@ components:
         smoothingPoolRegistrationChanged:
           type: string
           format: date-time
-    TransactionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        txHash:
-          $ref: '#/components/schemas/TransactionHash'
-        gasInfo:
-          type: object
-          properties:
-            estGasLimit:
-              type: integer
-            safeGasLimit:
-              type: integer
-        error:
-          type: string
-    TransactionHash:
+    Address_2:
       type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    WithdrawRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
     ClientSync:
       type: object
       properties:
@@ -440,6 +408,24 @@ components:
           format: float
           minimum: 0
           maximum: 1
+    ClaimRewardsRequest:
+      type: object
+      required:
+      - indices
+      properties:
+        indices:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount_2'
+    StakeRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
     NodeRewards:
       type: object
       properties:
@@ -453,6 +439,20 @@ components:
           format: date-time
         rewardsInterval:
           type: integer
+    SyncStatus:
+      type: object
+      properties:
+        eth1:
+          $ref: '#/components/schemas/ClientSync'
+        eth2:
+          $ref: '#/components/schemas/ClientSync'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
   parameters:
     Address:
       name: address

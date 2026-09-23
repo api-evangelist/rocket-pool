@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Rocket Pool Smart Node Daemon Service API
-  description: 'Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack. This API is the contract used by the rocketpool CLI to drive node operator workflows: wallet management, minipool and megapool lifecycle, RPL staking, rewards claims, smoothing pool participation, and oracle DAO / protocol DAO actions. It is intended to be reached only over a local Unix socket or loopback HTTP endpoint inside the Smart Node Docker network — never exposed to the public internet. Surface derived from the rocketpool CLI command tree documented in the rocket-pool/smartnode README.'
+  description: Local HTTP API exposed by the rocketpool-daemon Go service that ships with the Rocket Pool Smart Node Docker stack.
   version: 1.16.0
   license:
     name: GPL-3.0
@@ -43,16 +43,6 @@ paths:
                 $ref: '#/components/schemas/ServiceStatus'
 components:
   schemas:
-    ServiceVersion:
-      type: object
-      properties:
-        smartNodeVersion:
-          type: string
-          example: 1.16.0
-        daemonVersion:
-          type: string
-        configVersion:
-          type: string
     ServiceStatus:
       type: object
       properties:
@@ -69,3 +59,13 @@ components:
                 type: string
               uptimeSeconds:
                 type: integer
+    ServiceVersion:
+      type: object
+      properties:
+        smartNodeVersion:
+          type: string
+          example: 1.16.0
+        daemonVersion:
+          type: string
+        configVersion:
+          type: string

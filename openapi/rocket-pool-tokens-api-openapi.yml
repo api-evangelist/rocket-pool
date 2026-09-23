@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Rocket Pool Protocol API (rocketpool-go) Tokens API
-  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum. The API described here is a logical mapping of rocketpool-go packages — auction, deposit, minipool, network, node, rewards, settings, tokens, dao/protocol, dao/trustednode — onto HTTP-style operations. There is no hosted HTTP endpoint for this API; integrators read the equivalent state via Ethereum JSON-RPC eth_call requests against the deployed contracts using the Go library, the rocketpool-js library, or directly via web3 clients.
+  description: Read-oriented protocol surface exposed by the rocketpool-go Golang library on top of the Rocket Pool smart contracts deployed on Ethereum.
   version: 1.0.0
   license:
     name: GPL-3.0
@@ -43,12 +43,6 @@ paths:
                 $ref: '#/components/schemas/TokenState'
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount in wei
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
     TokenState:
       type: object
       properties:
@@ -64,3 +58,9 @@ components:
           type: number
           format: double
           description: Only populated for rETH
+    EthAmount:
+      type: string
+      description: Amount in wei
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$

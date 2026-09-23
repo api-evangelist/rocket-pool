@@ -85,9 +85,6 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount in wei
     DaoProposal:
       type: object
       properties:
@@ -109,9 +106,17 @@ components:
           $ref: '#/components/schemas/EthAmount'
         abstainVotes:
           $ref: '#/components/schemas/EthAmount'
+    EthAmount:
+      type: string
+      description: Amount in wei
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
+    ProtocolDaoSettings:
+      type: object
+      additionalProperties:
+        type: string
+      description: Map of protocol DAO setting name to current on-chain value
     EthAmount_2:
       type: string
       description: Amount expressed in wei (1 ETH = 10^18 wei)
@@ -125,11 +130,6 @@ components:
           $ref: '#/components/schemas/Address_2'
         blockNumber:
           type: integer
-    ProtocolDaoSettings:
-      type: object
-      additionalProperties:
-        type: string
-      description: Map of protocol DAO setting name to current on-chain value
     Address_2:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
