@@ -69,6 +69,9 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
+    EthAmount:
+      type: string
+      description: Amount in wei
     AuctionLot:
       type: object
       properties:
@@ -82,9 +85,32 @@ components:
           $ref: '#/components/schemas/EthAmount'
         totalRplAmount:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount:
+    AuctionStatus:
+      type: object
+      properties:
+        lotCount:
+          type: integer
+        remainingRpl:
+          $ref: '#/components/schemas/EthAmount_2'
+        canCreateLot:
+          type: boolean
+    EthAmount_2:
       type: string
-      description: Amount in wei
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+    AuctionBidRequest:
+      type: object
+      required:
+      - lotIndex
+      - amount
+      properties:
+        lotIndex:
+          type: integer
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
     TransactionResponse:
       type: object
       properties:
@@ -104,16 +130,6 @@ components:
               type: integer
         error:
           type: string
-    AuctionBidRequest:
-      type: object
-      required:
-      - lotIndex
-      - amount
-      properties:
-        lotIndex:
-          type: integer
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
     AuctionLot_2:
       type: object
       properties:
@@ -135,22 +151,6 @@ components:
           $ref: '#/components/schemas/EthAmount_2'
         remainingRplAmount:
           $ref: '#/components/schemas/EthAmount_2'
-    AuctionStatus:
-      type: object
-      properties:
-        lotCount:
-          type: integer
-        remainingRpl:
-          $ref: '#/components/schemas/EthAmount_2'
-        canCreateLot:
-          type: boolean
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

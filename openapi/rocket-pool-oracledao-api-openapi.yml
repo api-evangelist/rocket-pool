@@ -47,6 +47,9 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
     OracleDaoMember:
       type: object
       properties:
@@ -60,13 +63,23 @@ components:
         joinedTime:
           type: string
           format: date-time
-    Address:
+    EthAmount:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
     Address_2:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
       example: '0x0000000000000000000000000000000000000000'
+    OracleDaoStatus:
+      type: object
+      properties:
+        memberCount:
+          type: integer
+        proposalCount:
+          type: integer
+        isMember:
+          type: boolean
     OracleDaoMember_2:
       type: object
       properties:
@@ -85,19 +98,6 @@ components:
           format: date-time
         rplBondAmount:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    OracleDaoStatus:
-      type: object
-      properties:
-        memberCount:
-          type: integer
-        proposalCount:
-          type: integer
-        isMember:
-          type: boolean
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

@@ -91,6 +91,9 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
+    EthAmount:
+      type: string
+      description: Amount in wei
     RewardsInterval:
       type: object
       properties:
@@ -112,9 +115,13 @@ components:
           $ref: '#/components/schemas/EthAmount'
         smoothingPoolEth:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount:
+    TransactionHash:
       type: string
-      description: Amount in wei
+      pattern: ^0x[a-fA-F0-9]{64}$
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
     TransactionResponse:
       type: object
       properties:
@@ -158,13 +165,6 @@ components:
           $ref: '#/components/schemas/EthAmount_2'
         unclaimedSmoothingPool:
           $ref: '#/components/schemas/EthAmount_2'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

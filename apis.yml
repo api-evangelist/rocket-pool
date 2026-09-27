@@ -15,16 +15,21 @@ description: >-
   participation is on-chain via Ethereum JSON-RPC and the protocol's deployed contracts.
 type: Index
 deliveryModel:
-  model: unknown
-  open_source: unknown
+  model: self-hosted
+  license: GPL-3.0
+  license_evidence:
+    repo: rocket-pool/rocketpool
+    spdx: GPL-3.0
+    stars: 985
+  open_source: true
   commercial: false
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
-  confidence: low
+  label: Self-hosted open source · you run it yourself
+  confidence: medium
   source:
   - openapi
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown

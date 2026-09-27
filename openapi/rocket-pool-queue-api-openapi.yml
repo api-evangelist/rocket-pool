@@ -43,6 +43,24 @@ paths:
                 $ref: '#/components/schemas/TransactionResponse'
 components:
   schemas:
+    EthAmount:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+    QueueStatus:
+      type: object
+      properties:
+        depositPoolBalance:
+          $ref: '#/components/schemas/EthAmount'
+        depositPoolExcess:
+          $ref: '#/components/schemas/EthAmount'
+        minipoolQueueLength:
+          type: integer
+        minipoolQueueCapacity:
+          $ref: '#/components/schemas/EthAmount'
     TransactionResponse:
       type: object
       properties:
@@ -62,21 +80,3 @@ components:
               type: integer
         error:
           type: string
-    QueueStatus:
-      type: object
-      properties:
-        depositPoolBalance:
-          $ref: '#/components/schemas/EthAmount'
-        depositPoolExcess:
-          $ref: '#/components/schemas/EthAmount'
-        minipoolQueueLength:
-          type: integer
-        minipoolQueueCapacity:
-          $ref: '#/components/schemas/EthAmount'
-    EthAmount:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
