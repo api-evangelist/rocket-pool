@@ -91,9 +91,6 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    EthAmount:
-      type: string
-      description: Amount in wei
     RewardsInterval:
       type: object
       properties:
@@ -115,13 +112,12 @@ components:
           $ref: '#/components/schemas/EthAmount'
         smoothingPoolEth:
           $ref: '#/components/schemas/EthAmount'
+    EthAmount:
+      type: string
+      description: Amount in wei
     TransactionHash:
       type: string
       pattern: ^0x[a-fA-F0-9]{64}$
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
     TransactionResponse:
       type: object
       properties:
@@ -141,6 +137,10 @@ components:
               type: integer
         error:
           type: string
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
     ClaimAllRequest:
       type: object
       properties:

@@ -43,16 +43,6 @@ paths:
                 $ref: '#/components/schemas/ServiceStatus'
 components:
   schemas:
-    ServiceVersion:
-      type: object
-      properties:
-        smartNodeVersion:
-          type: string
-          example: 1.16.0
-        daemonVersion:
-          type: string
-        configVersion:
-          type: string
     ServiceStatus:
       type: object
       properties:
@@ -69,3 +59,13 @@ components:
                 type: string
               uptimeSeconds:
                 type: integer
+    ServiceVersion:
+      type: object
+      properties:
+        smartNodeVersion:
+          type: string
+          example: 1.16.0
+        daemonVersion:
+          type: string
+        configVersion:
+          type: string

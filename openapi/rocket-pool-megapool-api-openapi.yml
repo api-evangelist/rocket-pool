@@ -62,17 +62,6 @@ paths:
                 $ref: '#/components/schemas/TransactionResponse'
 components:
   schemas:
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-    EthAmount:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
     MegapoolDepositRequest:
       type: object
       required:
@@ -83,23 +72,13 @@ components:
           minimum: 1
         useExpressTicket:
           type: boolean
-    MegapoolStatus:
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        validatorCount:
-          type: integer
-        debt:
-          $ref: '#/components/schemas/EthAmount'
-        useLatestDelegate:
-          type: boolean
-        delegateAddress:
-          $ref: '#/components/schemas/Address'
-        nodeCapital:
-          $ref: '#/components/schemas/EthAmount'
-        userCapital:
-          $ref: '#/components/schemas/EthAmount'
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
     TransactionResponse:
       type: object
       properties:
@@ -119,3 +98,24 @@ components:
               type: integer
         error:
           type: string
+    EthAmount:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    MegapoolStatus:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        validatorCount:
+          type: integer
+        debt:
+          $ref: '#/components/schemas/EthAmount'
+        useLatestDelegate:
+          type: boolean
+        delegateAddress:
+          $ref: '#/components/schemas/Address'
+        nodeCapital:
+          $ref: '#/components/schemas/EthAmount'
+        userCapital:
+          $ref: '#/components/schemas/EthAmount'

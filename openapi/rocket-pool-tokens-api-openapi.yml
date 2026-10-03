@@ -58,9 +58,9 @@ components:
           type: number
           format: double
           description: Only populated for rETH
-    EthAmount:
-      type: string
-      description: Amount in wei
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
+    EthAmount:
+      type: string
+      description: Amount in wei

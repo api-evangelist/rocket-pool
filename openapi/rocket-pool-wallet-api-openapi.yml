@@ -95,19 +95,6 @@ components:
           description: Encrypted JSON keystore
         accountPrivateKey:
           type: string
-    WalletInitRequest:
-      type: object
-      required:
-      - password
-      properties:
-        password:
-          type: string
-          format: password
-        derivationPath:
-          type: string
-          example: m/44'/60'/0'/0/0
-        walletIndex:
-          type: integer
     WalletStatus:
       type: object
       properties:
@@ -133,5 +120,18 @@ components:
           format: password
         derivationPath:
           type: string
+        walletIndex:
+          type: integer
+    WalletInitRequest:
+      type: object
+      required:
+      - password
+      properties:
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+          example: m/44'/60'/0'/0/0
         walletIndex:
           type: integer
