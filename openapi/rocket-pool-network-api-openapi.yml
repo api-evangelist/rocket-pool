@@ -127,17 +127,6 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    NetworkBalances:
-      type: object
-      properties:
-        block:
-          type: integer
-        totalEth:
-          $ref: '#/components/schemas/EthAmount'
-        stakingEth:
-          $ref: '#/components/schemas/EthAmount'
-        rethSupply:
-          $ref: '#/components/schemas/EthAmount'
     EthAmount:
       type: string
       description: Amount in wei
@@ -164,60 +153,17 @@ components:
         rplPrice:
           type: number
           format: double
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    NetworkStats:
+    NetworkBalances:
       type: object
       properties:
-        totalValueLocked:
-          $ref: '#/components/schemas/EthAmount_2'
+        block:
+          type: integer
+        totalEth:
+          $ref: '#/components/schemas/EthAmount'
+        stakingEth:
+          $ref: '#/components/schemas/EthAmount'
         rethSupply:
-          $ref: '#/components/schemas/EthAmount_2'
-        rethExchangeRate:
-          type: number
-          format: double
-        rplPriceEth:
-          type: number
-          format: double
-        totalRplStaked:
-          $ref: '#/components/schemas/EthAmount_2'
-        totalNodes:
-          type: integer
-        totalMinipools:
-          type: integer
-        totalMegapoolValidators:
-          type: integer
-    DaoProposal:
-      type: object
-      properties:
-        id:
-          type: integer
-        proposer:
-          $ref: '#/components/schemas/Address'
-        message:
-          type: string
-        state:
-          type: string
-          enum:
-          - Pending
-          - ActivePhase1
-          - ActivePhase2
-          - Cancelled
-          - Vetoed
-          - QuorumNotMet
-          - Defeated
-          - Succeeded
-          - Expired
-          - Executed
-        createdTime:
-          type: string
-          format: date-time
+          $ref: '#/components/schemas/EthAmount'
     RplPrice:
       type: object
       properties:
@@ -245,6 +191,60 @@ components:
         targetNodeFee:
           type: number
           format: float
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    DaoProposal:
+      type: object
+      properties:
+        id:
+          type: integer
+        proposer:
+          $ref: '#/components/schemas/Address'
+        message:
+          type: string
+        state:
+          type: string
+          enum:
+          - Pending
+          - ActivePhase1
+          - ActivePhase2
+          - Cancelled
+          - Vetoed
+          - QuorumNotMet
+          - Defeated
+          - Succeeded
+          - Expired
+          - Executed
+        createdTime:
+          type: string
+          format: date-time
+    NetworkStats:
+      type: object
+      properties:
+        totalValueLocked:
+          $ref: '#/components/schemas/EthAmount_2'
+        rethSupply:
+          $ref: '#/components/schemas/EthAmount_2'
+        rethExchangeRate:
+          type: number
+          format: double
+        rplPriceEth:
+          type: number
+          format: double
+        totalRplStaked:
+          $ref: '#/components/schemas/EthAmount_2'
+        totalNodes:
+          type: integer
+        totalMinipools:
+          type: integer
+        totalMegapoolValidators:
+          type: integer
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml

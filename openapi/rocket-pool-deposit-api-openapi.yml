@@ -30,6 +30,9 @@ paths:
                 $ref: '#/components/schemas/DepositPool'
 components:
   schemas:
+    EthAmount:
+      type: string
+      description: Amount in wei
     DepositPool:
       type: object
       properties:
@@ -39,6 +42,3 @@ components:
           $ref: '#/components/schemas/EthAmount'
         userBalance:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount:
-      type: string
-      description: Amount in wei

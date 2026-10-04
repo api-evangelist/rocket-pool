@@ -43,6 +43,9 @@ paths:
                 $ref: '#/components/schemas/TokenState'
 components:
   schemas:
+    EthAmount:
+      type: string
+      description: Amount in wei
     TokenState:
       type: object
       properties:
@@ -61,6 +64,3 @@ components:
     Address:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
-    EthAmount:
-      type: string
-      description: Amount in wei

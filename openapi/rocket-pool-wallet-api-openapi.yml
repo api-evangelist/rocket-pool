@@ -81,31 +81,6 @@ paths:
                 $ref: '#/components/schemas/WalletExport'
 components:
   schemas:
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    WalletExport:
-      type: object
-      properties:
-        password:
-          type: string
-        wallet:
-          type: string
-          description: Encrypted JSON keystore
-        accountPrivateKey:
-          type: string
-    WalletStatus:
-      type: object
-      properties:
-        accountAddress:
-          $ref: '#/components/schemas/Address'
-        walletInitialized:
-          type: boolean
-        passwordSet:
-          type: boolean
-        ensName:
-          type: string
     WalletRecoverRequest:
       type: object
       required:
@@ -122,6 +97,17 @@ components:
           type: string
         walletIndex:
           type: integer
+    WalletStatus:
+      type: object
+      properties:
+        accountAddress:
+          $ref: '#/components/schemas/Address'
+        walletInitialized:
+          type: boolean
+        passwordSet:
+          type: boolean
+        ensName:
+          type: string
     WalletInitRequest:
       type: object
       required:
@@ -135,3 +121,17 @@ components:
           example: m/44'/60'/0'/0/0
         walletIndex:
           type: integer
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    WalletExport:
+      type: object
+      properties:
+        password:
+          type: string
+        wallet:
+          type: string
+          description: Encrypted JSON keystore
+        accountPrivateKey:
+          type: string

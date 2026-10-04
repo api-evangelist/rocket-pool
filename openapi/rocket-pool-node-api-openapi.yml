@@ -251,9 +251,6 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
     NodeDetails:
       type: object
       properties:
@@ -310,92 +307,15 @@ components:
           type: boolean
         finalised:
           type: boolean
-    EthAmount:
+    Address:
       type: string
-      description: Amount in wei
+      pattern: ^0x[a-fA-F0-9]{40}$
     PublicKey:
       type: string
       pattern: ^0x[a-fA-F0-9]{96}$
-    ClaimRewardsRequest:
-      type: object
-      required:
-      - indices
-      properties:
-        indices:
-          type: array
-          items:
-            type: integer
-        stakeAmount:
-          $ref: '#/components/schemas/EthAmount_2'
-    Address_2:
+    EthAmount:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    NodeRegisterRequest:
-      type: object
-      required:
-      - timezone
-      properties:
-        timezone:
-          type: string
-          example: America/Denver
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-    TransactionResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - success
-          - error
-        txHash:
-          $ref: '#/components/schemas/TransactionHash'
-        gasInfo:
-          type: object
-          properties:
-            estGasLimit:
-              type: integer
-            safeGasLimit:
-              type: integer
-        error:
-          type: string
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
-    WithdrawRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
-    ClientSync:
-      type: object
-      properties:
-        synced:
-          type: boolean
-        progress:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-    SyncStatus:
-      type: object
-      properties:
-        eth1:
-          $ref: '#/components/schemas/ClientSync'
-        eth2:
-          $ref: '#/components/schemas/ClientSync'
-    StakeRplRequest:
-      type: object
-      required:
-      - amount
-      properties:
-        amount:
-          $ref: '#/components/schemas/EthAmount_2'
+      description: Amount in wei
     NodeStatus:
       type: object
       properties:
@@ -440,6 +360,16 @@ components:
         smoothingPoolRegistrationChanged:
           type: string
           format: date-time
+    ClientSync:
+      type: object
+      properties:
+        synced:
+          type: boolean
+        progress:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
     NodeRewards:
       type: object
       properties:
@@ -453,6 +383,76 @@ components:
           format: date-time
         rewardsInterval:
           type: integer
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+    Address_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    StakeRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
+    NodeRegisterRequest:
+      type: object
+      required:
+      - timezone
+      properties:
+        timezone:
+          type: string
+          example: America/Denver
+    WithdrawRplRequest:
+      type: object
+      required:
+      - amount
+      properties:
+        amount:
+          $ref: '#/components/schemas/EthAmount_2'
+    SyncStatus:
+      type: object
+      properties:
+        eth1:
+          $ref: '#/components/schemas/ClientSync'
+        eth2:
+          $ref: '#/components/schemas/ClientSync'
+    TransactionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - success
+          - error
+        txHash:
+          $ref: '#/components/schemas/TransactionHash'
+        gasInfo:
+          type: object
+          properties:
+            estGasLimit:
+              type: integer
+            safeGasLimit:
+              type: integer
+        error:
+          type: string
+    ClaimRewardsRequest:
+      type: object
+      required:
+      - indices
+      properties:
+        indices:
+          type: array
+          items:
+            type: integer
+        stakeAmount:
+          $ref: '#/components/schemas/EthAmount_2'
   parameters:
     Address:
       name: address

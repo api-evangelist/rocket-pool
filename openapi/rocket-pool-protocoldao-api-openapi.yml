@@ -85,9 +85,9 @@ paths:
       description: Local Smart Node daemon (loopback)
 components:
   schemas:
-    Address:
+    EthAmount:
       type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
+      description: Amount in wei
     DaoProposal:
       type: object
       properties:
@@ -109,14 +109,18 @@ components:
           $ref: '#/components/schemas/EthAmount'
         abstainVotes:
           $ref: '#/components/schemas/EthAmount'
-    EthAmount:
+    Address:
       type: string
-      description: Amount in wei
+      pattern: ^0x[a-fA-F0-9]{40}$
     ProtocolDaoSettings:
       type: object
       additionalProperties:
         type: string
       description: Map of protocol DAO setting name to current on-chain value
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
     VotingPower:
       type: object
       properties:
@@ -130,10 +134,6 @@ components:
       type: string
       pattern: ^0x[a-fA-F0-9]{40}$
       example: '0x0000000000000000000000000000000000000000'
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml
