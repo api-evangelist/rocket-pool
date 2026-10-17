@@ -81,22 +81,10 @@ paths:
                 $ref: '#/components/schemas/WalletExport'
 components:
   schemas:
-    WalletRecoverRequest:
-      type: object
-      required:
-      - mnemonic
-      - password
-      properties:
-        mnemonic:
-          type: string
-          description: BIP-39 mnemonic phrase
-        password:
-          type: string
-          format: password
-        derivationPath:
-          type: string
-        walletIndex:
-          type: integer
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
     WalletStatus:
       type: object
       properties:
@@ -121,10 +109,22 @@ components:
           example: m/44'/60'/0'/0/0
         walletIndex:
           type: integer
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
+    WalletRecoverRequest:
+      type: object
+      required:
+      - mnemonic
+      - password
+      properties:
+        mnemonic:
+          type: string
+          description: BIP-39 mnemonic phrase
+        password:
+          type: string
+          format: password
+        derivationPath:
+          type: string
+        walletIndex:
+          type: integer
     WalletExport:
       type: object
       properties:

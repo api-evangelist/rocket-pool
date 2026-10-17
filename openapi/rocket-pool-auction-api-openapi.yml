@@ -85,30 +85,6 @@ components:
     EthAmount:
       type: string
       description: Amount in wei
-    AuctionLot_2:
-      type: object
-      properties:
-        index:
-          type: integer
-        exists:
-          type: boolean
-        startBlock:
-          type: integer
-        endBlock:
-          type: integer
-        startPrice:
-          $ref: '#/components/schemas/EthAmount_2'
-        currentPrice:
-          $ref: '#/components/schemas/EthAmount_2'
-        totalRplAmount:
-          $ref: '#/components/schemas/EthAmount_2'
-        claimedRplAmount:
-          $ref: '#/components/schemas/EthAmount_2'
-        remainingRplAmount:
-          $ref: '#/components/schemas/EthAmount_2'
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
     AuctionStatus:
       type: object
       properties:
@@ -118,6 +94,9 @@ components:
           $ref: '#/components/schemas/EthAmount_2'
         canCreateLot:
           type: boolean
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
     EthAmount_2:
       type: string
       description: Amount expressed in wei (1 ETH = 10^18 wei)
@@ -141,6 +120,27 @@ components:
               type: integer
         error:
           type: string
+    AuctionLot_2:
+      type: object
+      properties:
+        index:
+          type: integer
+        exists:
+          type: boolean
+        startBlock:
+          type: integer
+        endBlock:
+          type: integer
+        startPrice:
+          $ref: '#/components/schemas/EthAmount_2'
+        currentPrice:
+          $ref: '#/components/schemas/EthAmount_2'
+        totalRplAmount:
+          $ref: '#/components/schemas/EthAmount_2'
+        claimedRplAmount:
+          $ref: '#/components/schemas/EthAmount_2'
+        remainingRplAmount:
+          $ref: '#/components/schemas/EthAmount_2'
     AuctionBidRequest:
       type: object
       required:

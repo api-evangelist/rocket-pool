@@ -153,7 +153,30 @@ paths:
     - url: http://localhost:8080/api
       description: Local Smart Node daemon (loopback)
 components:
+  parameters:
+    Address:
+      name: address
+      in: path
+      required: true
+      schema:
+        $ref: '#/components/schemas/Address'
+    MinipoolAddress:
+      name: address
+      in: path
+      required: true
+      description: The Ethereum address of the minipool contract
+      schema:
+        $ref: '#/components/schemas/Address_2'
   schemas:
+    EthAmount:
+      type: string
+      description: Amount in wei
+    Address:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+    PublicKey:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{96}$
     MinipoolDetails:
       type: object
       properties:
@@ -180,30 +203,6 @@ components:
           type: boolean
         finalised:
           type: boolean
-    PublicKey:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{96}$
-    Address:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-    EthAmount:
-      type: string
-      description: Amount in wei
-    TransactionHash:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{64}$
-    Address_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x0000000000000000000000000000000000000000'
-    PublicKey_2:
-      type: string
-      pattern: ^0x[a-fA-F0-9]{96}$
-      description: BLS12-381 validator public key
-    EthAmount_2:
-      type: string
-      description: Amount expressed in wei (1 ETH = 10^18 wei)
-      example: '32000000000000000000'
     Minipool:
       type: object
       properties:
@@ -240,6 +239,17 @@ components:
           format: date-time
         useLatestDelegate:
           type: boolean
+    TransactionHash:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{64}$
+    EthAmount_2:
+      type: string
+      description: Amount expressed in wei (1 ETH = 10^18 wei)
+      example: '32000000000000000000'
+    Address_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x0000000000000000000000000000000000000000'
     TransactionResponse:
       type: object
       properties:
@@ -259,20 +269,10 @@ components:
               type: integer
         error:
           type: string
-  parameters:
-    Address:
-      name: address
-      in: path
-      required: true
-      schema:
-        $ref: '#/components/schemas/Address'
-    MinipoolAddress:
-      name: address
-      in: path
-      required: true
-      description: The Ethereum address of the minipool contract
-      schema:
-        $ref: '#/components/schemas/Address_2'
+    PublicKey_2:
+      type: string
+      pattern: ^0x[a-fA-F0-9]{96}$
+      description: BLS12-381 validator public key
 x-refined-from:
 - rocket-pool-protocol-openapi.yml
 - rocket-pool-smart-node-openapi.yml
