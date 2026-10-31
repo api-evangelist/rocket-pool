@@ -1,4 +1,4 @@
-# Rocket Pool (rocket-pool)
+# Rocket Pool
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,149 +66,167 @@
 
 Rocket Pool is a decentralized Ethereum liquid staking protocol that lets anyone participate in Ethereum proof-of-stake without running a full 32 ETH validator. Stakers deposit ETH and receive rETH, a rebasing-free yield-bearing liquid staking token that automatically accrues consensus and execution layer rewards and is freely composable across DeFi. On the supply side, permissionless node operators can run a Rocket Pool minipool with as little as 8 ETH (and a smaller RPL bond) — Rocket Pool pairs operator ETH with the rETH-backed deposit pool to fund full beacon-chain validators, and operators earn consensus rewards plus a commission from rETH users and RPL inflation rewards. The protocol is governed on-chain through the Protocol DAO (pDAO) and the Oracle DAO (oDAO) and is specified by Rocket Pool Improvement Proposals (RPIPs). The reference node software stack is the Smart Node (rocketpool CLI plus a Go daemon) distributed as Docker images, alongside Go and TypeScript/JavaScript libraries (rocketpool-go, rocketpool-js) for reading and writing protocol state directly against the Rocket Pool smart contracts on Ethereum mainnet. Rocket Pool has no centralized REST API, no hosted developer platform, no API keys, and no pricing — all participation is on-chain via Ethereum JSON-RPC and the protocol's deployed contracts.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rocket-pool/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rocket-pool/refs/heads/main/apis.yml)
+**Areas:** Blockchain · Ethereum · Liquid Staking · Proof of Stake · DeFi · Smart Contracts · Node Operators · Validator · Reth · RPL · Minipool · Decentralized Finance
 
-## Scope
+## Rocket Pool on APIs.io
 
-- **Type:** Index
-- **Position:** Provider
-- **Access:** 3rd-Party
+Everything profiled for Rocket Pool is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rocket-pool/](https://apis.io/providers/rocket-pool/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (15)
 
-- Blockchain
-- Ethereum
-- Liquid Staking
-- Proof of Stake
-- DeFi
-- Smart Contracts
-- Node Operators
-- Validator
-- rETH
-- RPL
-- Minipool
-- Decentralized Finance
-- Decentralized Governance
-- DAO
-- Web3
+- [Rocket Pool Protocol API (rocketpool-js)](https://apis.io/apis/rocket-pool/rocketpool-js-protocol-api/) — The rocketpool-js library is a TypeScript/JavaScript client for the Rocket Pool protocol's deployed smart contracts. It mirrors much of the Go library's…
+- [Rocket Pool Auction API](https://apis.io/apis/rocket-pool/rocket-pool-auction-api/) — The Auction API from Rocket Pool — 3 operation(s) for auction.
+- [Rocket Pool Deposit API](https://apis.io/apis/rocket-pool/rocket-pool-deposit-api/) — The Deposit API from Rocket Pool — 1 operation(s) for deposit.
+- [Rocket Pool Megapool API](https://apis.io/apis/rocket-pool/rocket-pool-megapool-api/) — The Megapool API from Rocket Pool — 3 operation(s) for megapool.
+- [Rocket Pool Minipool API](https://apis.io/apis/rocket-pool/rocket-pool-minipool-api/) — The Minipool API from Rocket Pool — 7 operation(s) for minipool.
+- [Rocket Pool Network API](https://apis.io/apis/rocket-pool/rocket-pool-network-api/) — The Network API from Rocket Pool — 7 operation(s) for network.
+- [Rocket Pool Node API](https://apis.io/apis/rocket-pool/rocket-pool-node-api/) — The Node API from Rocket Pool — 12 operation(s) for node.
+- [Rocket Pool OracleDAO API](https://apis.io/apis/rocket-pool/rocket-pool-oracledao-api/) — The OracleDAO API from Rocket Pool — 2 operation(s) for oracledao.
+- [Rocket Pool ProtocolDAO API](https://apis.io/apis/rocket-pool/rocket-pool-protocoldao-api/) — The ProtocolDAO API from Rocket Pool — 4 operation(s) for protocoldao.
+- [Rocket Pool Queue API](https://apis.io/apis/rocket-pool/rocket-pool-queue-api/) — The Queue API from Rocket Pool — 2 operation(s) for queue.
+- [Rocket Pool Rewards API](https://apis.io/apis/rocket-pool/rocket-pool-rewards-api/) — The Rewards API from Rocket Pool — 4 operation(s) for rewards.
+- [Rocket Pool Service API](https://apis.io/apis/rocket-pool/rocket-pool-service-api/) — The Service API from Rocket Pool — 2 operation(s) for service.
+- [Rocket Pool Settings API](https://apis.io/apis/rocket-pool/rocket-pool-settings-api/) — The Settings API from Rocket Pool — 1 operation(s) for settings.
+- [Rocket Pool Tokens API](https://apis.io/apis/rocket-pool/rocket-pool-tokens-api/) — The Tokens API from Rocket Pool — 2 operation(s) for tokens.
+- [Rocket Pool Wallet API](https://apis.io/apis/rocket-pool/rocket-pool-wallet-api/) — The Wallet API from Rocket Pool — 4 operation(s) for wallet.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-24
-- **Modified:** 2026-05-24
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Rocket Pool Smart Node Daemon API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Smart Node daemon API is the local HTTP/IPC interface exposed by the rocketpool-daemon Go service that ships with the Smart Node Docker stack. The rocketpool CLI uses this API to manage node operator wallets, minipools, megapools, RPL staking, rewards claims, smoothing pool participation, and protocol/oracle DAO interactions. It is local-only, authenticated by filesystem access, and is the contract between the CLI front-end and the long-running node service.
+- [Rocket Pool Agentic Access](https://apis.io/agentic-access/rocket-pool/rocket-pool-agentic-access/)
 
-- **Human URL:** [https://github.com/rocket-pool/smartnode](https://github.com/rocket-pool/smartnode)
+#### JSON Schema (3)
 
-#### Tags
+The data models the API reads and writes.
 
-- Smart Node
-- Node Operator
-- CLI
-- Minipool
-- Megapool
-- Wallet
-- Rewards
-- DAO
+- [RocketPoolMinipool](https://apis.io/schemas/rocket-pool/rocket-pool-minipool/)
+- [RocketPoolNode](https://apis.io/schemas/rocket-pool/rocket-pool-node/)
+- [RocketPoolRewardsInterval](https://apis.io/schemas/rocket-pool/rocket-pool-rewards-interval/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Source Code](https://github.com/rocket-pool/smartnode)
-- [Documentation](https://docs.rocketpool.net/guides/node/responsibilities)
-- [OpenAPI](openapi/rocket-pool-smart-node-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rocket-pool-smart-node.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rocket-pool-smart-node.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral Rules](rules/rocket-pool-smart-node-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
+Data models expressed in JSON Structure.
 
-### Rocket Pool Protocol API (rocketpool-go)
+- [Rocket Pool Minipool Structure](https://apis.io/json-structure/rocket-pool/rocket-pool-minipool-structure/)
 
-The rocketpool-go library is a Golang client that wraps the Rocket Pool smart contracts deployed on Ethereum and exposes a typed protocol API for reading and writing network state: deposit pool, minipools, megapools, node registrations, RPL staking, rewards trees, auctions, oracle DAO, protocol DAO, tokens (rETH, RPL), and protocol settings. It is the canonical Go interface to the protocol and is used by the Smart Node, by Oracle DAO tooling, and by third-party integrators.
+#### JSON-LD (1)
 
-- **Human URL:** [https://github.com/rocket-pool/rocketpool-go](https://github.com/rocket-pool/rocketpool-go)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Rocket Pool Context](https://apis.io/jsonld/rocket-pool/rocket-pool-context/)
 
-- Smart Contracts
-- Go
-- Library
-- Protocol
-- rETH
-- RPL
-- Minipool
-- Auction
-- DAO
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Source Code](https://github.com/rocket-pool/rocketpool-go)
-- [Documentation](https://docs.rocketpool.net/overview/contracts-integrations)
-- [OpenAPI](openapi/rocket-pool-protocol-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rocket-pool-protocol.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rocket-pool-protocol.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Rocket Pool Vocabulary](https://apis.io/vocabularies/rocket-pool/rocket-pool-vocabulary/)
 
-### Rocket Pool Protocol API (rocketpool-js)
+#### Examples (3)
 
-The rocketpool-js library is a TypeScript/JavaScript client for the Rocket Pool protocol's deployed smart contracts. It mirrors much of the Go library's surface and is intended for browser-based dApps, indexer services, and integrations such as DeFi front-ends that need to read rETH state or submit user deposits.
+Example requests and responses.
 
-- **Human URL:** [https://github.com/rocket-pool/rocketpool-js](https://github.com/rocket-pool/rocketpool-js)
+- [Rocket Pool Minipool Status Example](https://apis.io/examples/rocket-pool/rocket-pool-minipool-status-example/)
+- [Rocket Pool Network Stats Example](https://apis.io/examples/rocket-pool/rocket-pool-network-stats-example/)
+- [Rocket Pool Rewards Status Example](https://apis.io/examples/rocket-pool/rocket-pool-rewards-status-example/)
 
-#### Tags
+#### Collections (16)
 
-- Smart Contracts
-- TypeScript
-- JavaScript
-- Library
-- rETH
-- dApp
+Postman and Open Collection request collections.
 
-#### Properties
+- [Rocket Pool Protocol API (rocketpool-go) Auction API](https://apis.io/collections/rocket-pool/open-rocket-pool-auction-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Deposit API](https://apis.io/collections/rocket-pool/open-rocket-pool-deposit-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Megapool API](https://apis.io/collections/rocket-pool/open-rocket-pool-megapool-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Minipool API](https://apis.io/collections/rocket-pool/open-rocket-pool-minipool-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Network API](https://apis.io/collections/rocket-pool/open-rocket-pool-network-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Node API](https://apis.io/collections/rocket-pool/open-rocket-pool-node-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction OracleDAO API](https://apis.io/collections/rocket-pool/open-rocket-pool-oracledao-api/)
+- [Rocket Pool Protocol API (rocketpool-go)](https://apis.io/collections/rocket-pool/open-rocket-pool-protocol/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction ProtocolDAO API](https://apis.io/collections/rocket-pool/open-rocket-pool-protocoldao-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Queue API](https://apis.io/collections/rocket-pool/open-rocket-pool-queue-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Rewards API](https://apis.io/collections/rocket-pool/open-rocket-pool-rewards-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Service API](https://apis.io/collections/rocket-pool/open-rocket-pool-service-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Settings API](https://apis.io/collections/rocket-pool/open-rocket-pool-settings-api/)
+- [Rocket Pool Smart Node Daemon API](https://apis.io/collections/rocket-pool/open-rocket-pool-smart-node/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Tokens API](https://apis.io/collections/rocket-pool/open-rocket-pool-tokens-api/)
+- [Rocket Pool Protocol API (rocketpool-go) Auction Wallet API](https://apis.io/collections/rocket-pool/open-rocket-pool-wallet-api/)
 
-- [Source Code](https://github.com/rocket-pool/rocketpool-js)
-- [SDK](https://www.npmjs.com/package/@rocket-pool/contracts)
-- [Postman Collection](collections/rocket-pool-protocol.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rocket-pool-protocol.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/rocket-pool-smart-node.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rocket-pool-smart-node.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-## Common Properties
+Spectral rulesets for the provider's contracts.
+
+- [Rocket Pool — jsonschema rules](https://apis.io/rules/rocket-pool/rocket-pool-jsonschema-spectral-rules/)
+- [Rocket Pool — smart node rules](https://apis.io/rules/rocket-pool/rocket-pool-smart-node-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rocket Pool Domain Security](https://apis.io/security/rocket-pool/rocket-pool-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://rocketpool.net)
 - [Documentation](https://docs.rocketpool.net)
-- [Getting Started](https://docs.rocketpool.net/guides/staking/overview)
-- [Node Operator Guide](https://docs.rocketpool.net/guides/node/intro)
-- [Overview](https://docs.rocketpool.net/overview/)
-- [Contracts And Integrations](https://docs.rocketpool.net/overview/contracts-integrations)
-- [GitHub Organization](https://github.com/rocket-pool)
-- [Source Code](https://github.com/rocket-pool/rocketpool)
-- [Smart Node](https://github.com/rocket-pool/smartnode)
-- [Smart Node Installer](https://github.com/rocket-pool/smartnode-install)
-- [Go S D K](https://github.com/rocket-pool/rocketpool-go)
-- [Java Script S D K](https://github.com/rocket-pool/rocketpool-js)
-- [Node Manager Core](https://github.com/rocket-pool/node-manager-core)
-- [Oracle D A O Tool](https://github.com/rocket-pool/odaotool)
-- [Tree Gen](https://github.com/rocket-pool/treegen)
-- [Router](https://github.com/rocket-pool/rocketpool-router)
-- [Subgraph](https://github.com/rocket-pool/rocket-pool-subgraph)
-- [Improvements](https://github.com/rocket-pool/RPIPs)
-- [Research](https://github.com/rocket-pool/rocketpool-research)
-- [Snapshot Strategies](https://github.com/rocket-pool/snapshot-strategies)
-- [Ledger Plugin](https://github.com/rocket-pool/ledger-app-plugin-rocketpool)
-- [Docker Images](https://hub.docker.com/u/rocketpool)
-- [Governance Forum](https://dao.rocketpool.net)
-- [Twitter](https://twitter.com/Rocket_Pool)
-- [Discord](https://discord.gg/rocketpool)
-- [License](https://github.com/rocket-pool/rocketpool/blob/master/LICENSE)
-- [JSON Schema](json-schema/rocket-pool-minipool-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/rocket-pool-minipool-structure.json)
-- [JSON-LD](json-ld/rocket-pool-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/rocket-pool-vocabulary.yml)
+- [Getting started](https://docs.rocketpool.net/guides/staking/overview)
+- [Blog](https://rocketpool.net/blog/)
+- [GitHub](https://github.com/rocket-pool)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 19.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 42.7 |
+| Contract governance | 27.3 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 0.0 |
+
+**Agent readiness 14.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rocket-pool/](https://apis.io/providers/rocket-pool/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rocket Pool: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rocket-pool/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
